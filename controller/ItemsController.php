@@ -5,7 +5,7 @@ require_once WWW_ROOT . 'controller' . DS . 'Controller.php';
 
 require_once WWW_ROOT . 'phpass' . DS . 'Phpass.php';
 
-class UsersController extends Controller {
+class ItemsController extends Controller {
 
 	//private $userDAO;
 
