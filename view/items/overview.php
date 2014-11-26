@@ -1,6 +1,3 @@
-<audio preload="metadata">
-
-		</audio>
 
 		<header>
 			<h1>Blackboard</h1>
