@@ -64,7 +64,7 @@ html {
 
 h1{
 	font-size: 2em;
-	color: #fff;
+	color: #000;
 }
 
 body {
@@ -76,16 +76,18 @@ body {
 }
 
 ul {
+
+	padding:10px;
 	display: block;
-	background-color: #FFFDFF;
+	background-color: #DB6C7C;
+	width: 960px;
 }
 
 ul li{
 	display: inline;
-  padding: 10px;
   list-style-type: upper-roman;
   list-style-position: inside;
-  color: #F7CAC1;
+  color:#FFF;
   background-color: #DB6C7C;
 	line-height: 20px;
 }
@@ -119,13 +121,13 @@ header{
 }
 
 .container {
-  width: 500px;
+  width: 960px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .control-bar {
-  width: 500px;
+  width: 960px;
   position: relative;
   line-height: 40px;
   margin-right: 20px;
@@ -136,7 +138,8 @@ header{
 
 .wrap {
   background-color: #97AF22;
-  height: 40px;
+  height: 540px;
+  background-color: #00FFFF;
 }
 
 .controls, .indicators {
