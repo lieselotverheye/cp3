@@ -19,11 +19,11 @@ if(empty($_GET['page'])) {
     $_GET['page'] = 'home';
 }
 
-
+/*
 if(empty($_SESSION['user']) && $_GET['page'] != 'login-register'){
     header('Location: index.php?page=login-register');
     exit();
-}
+}*/
 
 if(empty($routes[$_GET['page']])) {
     header('Location: index.php');
