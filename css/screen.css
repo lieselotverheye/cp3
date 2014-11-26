@@ -1,0 +1,163 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+@font-face {
+  font-family: 'Monaco';
+  src: url('../fonts/monaco-webfont.eot');
+  src: url('../fonts/monaco-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/monaco-webfont.woff') format('woff'),
+       url('../fonts/monaco-webfont.ttf') format('truetype'),
+       url('../fonts/monaco-webfont.svg#MonacoRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+h1{
+	font-size: 2em;
+	color: #fff;
+}
+
+body {
+  background-color: #FFFDFF;
+  font-family: Monaco, Times, monospace;
+  color: #292E40;
+  font-size:1.3em;
+  padding: 20px;
+}
+
+ol {
+  margin-bottom: 4px;
+}
+
+li {
+  line-height: 20px;
+  background-color: #DB6C7C;
+  padding: 10px;
+  list-style-type: upper-roman;
+  list-style-position: inside;
+  color: #F7CAC1;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+li a {
+  color: #FFFDFF;
+  text-decoration:  none;
+}
+
+li strong {
+  color: #F7CAC1;
+}
+
+.playing, ol li:hover {
+  background-color: #F7CAC1;
+  color: #DB6C7C;
+}
+
+.playing strong, ol li:hover strong {
+  color: #DB6C7C;
+}
+
+header{
+	margin-bottom:20px;
+}
+
+.dummy {
+  clear: both;
+  height: 1px;
+  font-size: 1px;
+  line-height: 1px;
+  overflow: hidden;
+}
+
+.container {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.control-bar {
+  width: 500px;
+  position: relative;
+  line-height: 40px;
+  margin-right: 20px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  border: 1px solid #DB6C7C;
+}
+
+.wrap {
+  background-color: #97AF22;
+  height: 40px;
+}
+
+.controls, .indicators {
+	margin-top:20px;
+}
+
+.control {
+  padding: 8px;
+  display: inline-block;
+  border-radius: 5px;
+  background-color: #F7CAC1;
+  color: #FFFDFF;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.control:hover {
+	background-color: #FFFDFF;
+	color: #F7CAC1;
+}
