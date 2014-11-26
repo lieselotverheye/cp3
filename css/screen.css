@@ -75,12 +75,9 @@ body {
   padding: 20px;
 }
 
-ol {
-  margin-bottom: 4px;
-}
-
 ul {
 	display: block;
+	background-color: #FFFDFF;
 }
 
 ul li{
@@ -93,18 +90,8 @@ ul li{
 	line-height: 20px;
 }
 
-li {
 
-}
 
-li:last-child {
-  border-bottom: none;
-}
-
-li a {
-  color: #FFFDFF;
-  text-decoration:  none;
-}
 
 li strong {
   color: #F7CAC1;
@@ -153,13 +140,12 @@ header{
 }
 
 .controls, .indicators {
-	margin-top:20px;
+	margin-top:10px;
 }
 
 .control {
   padding: 8px;
   display: inline-block;
-  border-radius: 5px;
   background-color: #F7CAC1;
   color: #FFFDFF;
   text-transform: uppercase;
