@@ -13,6 +13,10 @@
 			</form>
 			<div class="user_controls">
 				<a href="#" class="control" data-control="add_project">new project</a>
+				<form class=".rolloutInput">
+					<input type="text" placeholder="password"></li>
+					<input type="submit" value="submit" data-control="login"></li>
+				</form>
 				<a href="#" class="control" data-control="invite_user">invite user</a>
 				<a href="#" class="control" data-control="save_project">save</a>
 				<a href="#" class="control" data-control="delete_project">delete</a>

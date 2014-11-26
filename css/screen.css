@@ -158,3 +158,11 @@ header{
 	background-color: #FFFDFF;
 	color: #F7CAC1;
 }
+
+.rolloutInput {
+	display: block;
+}
+
+.rolloutInput input{
+display: inline;
+}
