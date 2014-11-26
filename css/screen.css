@@ -142,7 +142,7 @@ header{
   background-color: #00FFFF;
 }
 
-.controls, .indicators {
+.user_controls, .project_controls {
 	margin-top:10px;
 }
 
