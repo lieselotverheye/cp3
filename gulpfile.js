@@ -47,7 +47,7 @@ gulp.task('scripts', ['lint'], function(){
     { maxLineLen: 500 }
 	);
 
-	console.log(uglified);
+	//console.log(uglified);
 
 
 	return bundler.bundle()
