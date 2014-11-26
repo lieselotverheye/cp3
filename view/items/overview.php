@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Blackboard</title>
-	<link rel="stylesheet" href="css/screen.css" type="text/css" />
-</head>
-<body>
-	<div class="container">
-
-		<audio preload="metadata">
+<audio preload="metadata">
 
 		</audio>
 
@@ -43,7 +33,3 @@
 				<div class="wrap">&nbsp;</div>
 			</div>
 		</div>
-	</div>
-	<script src="js/app.js"></script>
-</body>
-</html>

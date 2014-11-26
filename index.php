@@ -6,21 +6,13 @@ define('WWW_ROOT', __DIR__ . DS);
 
 $routes = array(
     'home' => array(
-        'controller' => 'Todos',
+        'controller' => 'Items',
         'action' => 'overview'
-    ),
-    'delete-todo' => array(
-        'controller' => 'Todos',
-        'action' => 'delete'
     ),
     'login-register' => array(
     	'controller' => 'Users',
     	'action' => 'loginregister'
-	),
-	'logout' => array(
-    	'controller' => 'Users',
-    	'action' => 'logout'
-	),
+		)
 );
 
 if(empty($_GET['page'])) {
