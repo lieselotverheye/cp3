@@ -79,13 +79,22 @@ ol {
   margin-bottom: 4px;
 }
 
-li {
-  line-height: 20px;
-  background-color: #DB6C7C;
+ul {
+	display: block;
+}
+
+ul li{
+	display: inline;
   padding: 10px;
   list-style-type: upper-roman;
   list-style-position: inside;
   color: #F7CAC1;
+  background-color: #DB6C7C;
+	line-height: 20px;
+}
+
+li {
+
 }
 
 li:last-child {
