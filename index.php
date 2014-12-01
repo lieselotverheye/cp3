@@ -9,9 +9,9 @@ $routes = array(
         'controller' => 'Items',
         'action' => 'overview'
     ),
-    'login-register' => array(
+    'register' => array(
     	'controller' => 'Users',
-    	'action' => 'loginregister'
+    	'action' => 'register'
 		)
 );
 

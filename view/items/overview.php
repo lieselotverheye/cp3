@@ -1,13 +1,15 @@
 
 		<header>
-			<h1>Blackboard</h1>
+			<h1 class="title">Whiteboard</h1>
 		</header>
 
 
 			<form>
-				<li><input type="text" name="loginEmail" placeholder="email"></li>
-				<li><input type="text" name="loginPass" placeholder="password"></li>
-				<li><input type="submit" value="login" data-control="login"></li>
+				<input type="text" name="loginEmail" placeholder="email">
+				<input type="text" name="loginPass" placeholder="password">
+				<input type="submit" value="login" data-control="login">
+
+				<a href="index.php?page=register" class="register"/>
 			</form>
 
 			<?php

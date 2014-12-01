@@ -10,11 +10,11 @@ var gulp = require('gulp'),
 		uglify = require('gulp-uglify');
 
 gulp.task('styles', function(){
-	return gulp.src('./css/src/*.scss')
+	return gulp.src('./_scss/*.scss')
 		.pipe(compass({
 			config_file: './config.rb',
 			css: './css',
-			sass: 'css/src',
+			sass: './_scss',
 			environment: 'production'
 		}))
 		.on('error', function(err){
@@ -55,5 +55,5 @@ gulp.task('scripts', ['lint'], function(){
 
 gulp.task('watch', ['scripts', 'styles'], function(){
 	gulp.watch(['js/src/**/*.js'], ['scripts']);
-	gulp.watch(['css/src/**/*.scss'], ['styles']);
+	gulp.watch(['_scss/*.scss'], ['styles']);
 });

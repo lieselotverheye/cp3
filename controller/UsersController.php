@@ -13,7 +13,7 @@ class UsersController extends Controller {
 		$this->userDAO = new UserDAO();
 	}
 
-	public function loginregister() {
+	public function register() {
 		/*if(!empty($_POST['action'])) {
 			if($_POST['action'] == 'Login') {
 				$this->_handleLogin();
