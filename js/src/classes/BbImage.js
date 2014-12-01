@@ -17,7 +17,7 @@ module.exports = (function(){
 
 
 	BbImage.prototype.removeClickHandler = function(e) {
-		//bean.fire(this, 'remove', this);
+		bean.fire(this, 'remove', this);
 
 	};
 

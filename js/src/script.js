@@ -73,7 +73,7 @@
 				var bbImage = new BbImage(data[i]);
 				$('#container').append(bbImage.el);
 				//bean.on(bbImage.el, 'remove', BbImage.removeHandler.bind(bbImage.el));
-				bean.on(bbImage, 'remove', removeHandler());
+				bean.on(bbImage, 'remove', this.removeHandler.bind(bbImage));
 			}
 		}
 		else if(data instanceof String){
@@ -81,9 +81,9 @@
 		}
 	}
 
-	function removeHandler() {
-		//console.log("in de removeHandler");
-		//this.el.removeChild(bbImage.el);
+	removeHandler = function(bbImage) {
+		console.log(bbImage);
+		this.el.removeChild(bbImage.el);
 	};
 
 	function add_post_it(){
