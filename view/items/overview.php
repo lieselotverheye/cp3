@@ -6,9 +6,10 @@
 				<h1 class="title">Whiteboard</h1>
 
 				<input type="text" name="loginEmail" class="loginEmail" placeholder="email"/>
+				<span class="error"><?php if(!empty($errors['loginEmail']) && (!empty($_POST['count']))){ echo $errors['loginEmail']; } ?>
 				<input type="password" name="loginPass" class="loginPass" placeholder="password"/>
 				<input  type="submit" value="login" class="loginknop" data-control="login"/>
-								<a href="index.php?page=register" class="register">register</a>
+				<a href="index.php?page=register" class="register">register</a>
 
 			</form>
 

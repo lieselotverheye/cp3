@@ -5,6 +5,8 @@
 	var Postit = require('./classes/Postit');
 	var Project = require('./classes/Project');
 
+$clickcount = 0;
+
 	function clicked(e){
 		e.preventDefault();
 			switch(e.currentTarget.getAttribute("data-control")){
@@ -54,7 +56,10 @@
 		$('.loginknop').on('click', function(){
 			event.preventDefault();
 
+
+			$clickcount += 1;
 			var inputData = {
+				'count' : 1,
 				'loginEmail' : $('.loginEmail').val(),
 				'loginPass' : $('.loginPass').val()
 			};
