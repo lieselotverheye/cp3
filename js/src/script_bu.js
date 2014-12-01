@@ -1,5 +1,4 @@
 (function(){
-	var BbImage = require('./classes/BbImage.js');
 
 	function clicked(e){
 		e.preventDefault();
@@ -49,8 +48,7 @@
 	}
 
 	function add_image(){
-		var bbImage = new BbImage();
-		console.log(BbImage);
+		console.log("add_image");
 	}
 
 	function add_post_it(){

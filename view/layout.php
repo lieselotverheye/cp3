@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Todos</title>
+        <title>Blackboard</title>
         <link href="css/screen.css" rel="stylesheet">
     </head>
     <body>

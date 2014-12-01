@@ -1,4 +1,3 @@
-// 1. Requires
 var gulp = require('gulp'),
 		browserify = require('browserify'),
 		buffer = require('gulp-buffer'),
@@ -9,23 +8,21 @@ var gulp = require('gulp'),
 		sourcemaps = require('gulp-sourcemaps'),
 		stylish = require('jshint-stylish'),
 		uglify = require('gulp-uglify');
-		uglifycss = require('uglifycss');
-
 
 gulp.task('styles', function(){
-	return gulp.src('./_scss/*.scss')
+	return gulp.src('./css/src/*.scss')
 		.pipe(compass({
 			config_file: './config.rb',
 			css: './css',
-			sass: './_scss',
-
+			sass: 'css/src',
+			environment: 'production'
 		}))
 		.on('error', function(err){
 			gutil.log(err.message);
 			gutil.beep();
 			this.emit('end');
 		})
-		.pipe(gulp.dest('./css'))
+		.pipe(gulp.dest('./css'));
 });
 
 gulp.task('lint', function(){
@@ -40,16 +37,6 @@ gulp.task('scripts', ['lint'], function(){
 		debug: true
 	});
 
-	var uglifycss = require('uglifycss');
-
-	var uglified = uglifycss.processFiles(
-    [ './css/screen.css' ],
-    { maxLineLen: 500 }
-	);
-
-	//console.log(uglified);
-
-
 	return bundler.bundle()
 		.on('error', function(err) {
 			gutil.log(err.message);
@@ -59,14 +46,14 @@ gulp.task('scripts', ['lint'], function(){
 		.pipe(source('script.dist.js'))
 		.pipe(buffer())
 		.pipe(sourcemaps.init({loadMaps: true}))
-		.pipe(uglify())
+    .pipe(uglify())
     .pipe(sourcemaps.write('./', {
     	sourceRoot: '../'
     }))
-		.pipe(gulp.dest('./js'))
+		.pipe(gulp.dest('./js'));
 });
 
-gulp.task('default', ['scripts', 'styles'], function(){
+gulp.task('watch', ['scripts', 'styles'], function(){
 	gulp.watch(['js/src/**/*.js'], ['scripts']);
-	gulp.watch(['_scss/**/*.scss'], ['styles']);
+	gulp.watch(['css/src/**/*.scss'], ['styles']);
 });
