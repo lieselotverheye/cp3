@@ -185,3 +185,8 @@ header {
   background-color: #FFFDFF;
   color: #F7CAC1;
 }
+
+.image{
+	position:absolute;
+	draggable: true;
+}

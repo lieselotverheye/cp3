@@ -41,6 +41,10 @@
 		//data wordt zogezegd gehaald, stel nu dat we wat image objects hebben met daarin een url, xpos en ypos;
 		//container.innerHMTL = "";
 		// for each item in de array, een image aanmaken
+		var imageData = {image_url : "assets/images/2014-11-30-sunday-rec-projects-bucks-dinosaurs.jpg"};
+		var imageData2 = {image_url : "assets/images/2014-11-30-sunday-rec-projects-wiersma-family-crest.jpg"};
+		var imageArray = [imageData, imageData2];
+		add_image(imageArray);
 	}
 
 	function add_project(){
@@ -59,12 +63,25 @@
 		console.log("delete_project");
 	}
 
-	function add_image(){
-		var imageData = {image_url : "assets/images/2014-11-30-sunday-rec-projects-bucks-dinosaurs.jpg"};
-		var bbImage = new BbImage(imageData);
-		console.log(bbImage);
+	function add_image(data){
+		//kijken welk dataType het is, als het een array is, door bv alles in te laden doen we een for loop
+		//als het een string is door maar 1 object toe te voegen, voegen we maar 1 object toe.
+		//code is dan korter
+		if(data instanceof Array){
+			//console.log(data + " is an array");
+			for(var i = 0; i<data.length;i++){
+				var bbImage = new BbImage(data[i]);
+				console.log(bbImage);
+				$('#container').append(bbImage.el);
+			}
+		}
+		else if(data instanceof String){
+			console.log(data + " is a string");
+		}
 
-		$('#container').append(bbImage.el);
+
+
+
 	}
 
 	function add_post_it(){

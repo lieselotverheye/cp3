@@ -9,7 +9,7 @@
     	<script id="imageTemplate" type="text/template">
     		<div class='image'>
 		       <img src="{{{image_url}}}">
-		      <a href="#" class="btn btn-delete">delete</a>
+		      <a href="#" class="btn-delete">delete</a>
 		      </div>
 	</script>
         <div id="container">
@@ -22,6 +22,7 @@
 
     </body>
     <!--volgorde belangrijk -->
+    <script src="js/vendor/bean.min.js"></script>
     <script src="js/vendor/handlebars.min.js"></script>
     <script src="js/vendor/jquery-2.1.1.min.js"></script>
     <script src="js/script.dist.js"></script>
