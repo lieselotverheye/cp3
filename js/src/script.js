@@ -1,8 +1,8 @@
 (function(){
-	var BbImage = require('./classes/BbImage.js');
-	var BbVideo = require('./classes/BbVideo.js');
-	var Invite = require('./classes/Invite.js');
-	var Postit = require('./classes/Postit.js');
+	var BbImage = require('./classes/BbImage');
+	var BbVideo = require('./classes/BbVideo');
+	var Invite = require('./classes/Invite');
+	var Postit = require('./classes/Postit');
 	var Project = require('./classes/Project');
 
 	function clicked(e){
@@ -33,7 +33,14 @@
 				console.log("does not contain data control");
 			}
 		});
+		fetch_data();
 
+	}
+
+	function fetch_data(){
+		//data wordt zogezegd gehaald, stel nu dat we wat image objects hebben met daarin een url, xpos en ypos;
+		//container.innerHMTL = "";
+		// for each item in de array, een image aanmaken
 	}
 
 	function add_project(){
@@ -53,7 +60,11 @@
 	}
 
 	function add_image(){
-		var bbImage = new BbImage();
+		var imageData = {image_url : "assets/images/2014-11-30-sunday-rec-projects-bucks-dinosaurs.jpg"};
+		var bbImage = new BbImage(imageData);
+		console.log(bbImage);
+
+		$('#container').append(bbImage.el);
 	}
 
 	function add_post_it(){
