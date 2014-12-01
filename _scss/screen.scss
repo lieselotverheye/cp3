@@ -5,8 +5,26 @@
 */
 /* HTML5 display-role reset for older browsers */
 
+$zwart: #1D1F21;
+$oranje: #ed593b;
+
 body {
 	font-size: 62.5%;
+	font-family: arial, sans-serif;
+	background-color: #ffffff;
+}
+
+@font-face {
+    font-family: 'gobold';
+    src: url('../fonts/gobold/gobold_thin-webfont.eot');
+    src: url('../fonts/gobold/gobold_thin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/gobold/gobold_thin-webfont.woff2') format('woff2'),
+         url('../fonts/gobold/gobold_thin-webfont.woff') format('woff'),
+         url('../fonts/gobold/gobold_thin-webfont.ttf') format('truetype'),
+         url('../fonts/gobold/gobold_thin-webfont.svg#gobold_thinregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
 }
 
 #container{
@@ -14,9 +32,82 @@ body {
 	margin: 0px auto;
 }
 
-body .title{
-	margin-top: 50px;
-	font-size: 3em;
-	width: 200px;
+/*body .title{
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	padding-top: 40px;
+	width: 150px;
 	margin: 0px auto;
+	font-family: 'gobold', verdana, sans-serif;
+	font-size: 1.9em;
+	color: #ffffff;
+	margin: 0px auto;
+}*/
+
+body header{
+	width: 100%;
+	background-color: $zwart;
+}
+
+header form{
+
+			padding: 23px;
+
+
+			input[type="text"], input[type="password"]{
+				border: none;
+					color: $zwart;
+					padding: 8px;
+					font-size: 1.3em;
+					background-color: #565d64;
+					outline: none;
+
+					&:focus{
+						background-color: #8e99a5;
+						transition: all 0.4s;
+					}
+			}
+
+
+			::-webkit-input-placeholder {
+		   	color: $zwart;
+			}
+
+			:-moz-placeholder { /* Firefox 18- */
+		  	 color: $zwart;
+			}
+
+			::-moz-placeholder {  /* Firefox 19+ */
+		  	 color: $zwart;
+			}
+
+			:-ms-input-placeholder {
+			   color: $zwart;
+			}
+
+
+			input[type="submit"], .register{
+				height: 32px;
+				margin-left: 1px;
+				padding: 9px 12px 9px 12px;
+				background-color: #ed593b;
+				text-transform: uppercase;
+				letter-spacing: 2px;
+				font-size: 1.2em;
+				color: #f5baae;
+				text-decoration: none;
+				border: none;
+
+				&:hover{
+						background-color: #f3745b;
+						color: #f8dad4;
+						transition: all 0.2s;
+					}
+			}
+
+			.register{
+				margin-left: 400px;
+			}
+
+
 }

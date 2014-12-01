@@ -1,16 +1,19 @@
 
 		<header>
-			<h1 class="title">Whiteboard</h1>
+
+			<form method="post">
+
+				<input type="text" name="loginEmail" placeholder="email">
+				<input type="password" name="loginPass" placeholder="password">
+				<input type="submit" value="login" data-control="login">
+								<a href="index.php?page=register" class="register">register</a>
+
+			</form>
+
 		</header>
 
 
-			<form>
-				<input type="text" name="loginEmail" placeholder="email">
-				<input type="text" name="loginPass" placeholder="password">
-				<input type="submit" value="login" data-control="login">
 
-				<a href="index.php?page=register" class="register"/>
-			</form>
 
 			<?php
 			if(!empty($_SESSION['user'])){
@@ -18,7 +21,7 @@
 			?>
 			<div class="user_controls">
 				<a href="#" class="control" data-control="add_project">new project</a>
-				<form class=".rolloutInput">
+				<form method="post" class=".rolloutInput">
 					<input type="text" placeholder="password"></li>
 					<input type="submit" value="submit" data-control="login"></li>
 				</form>
