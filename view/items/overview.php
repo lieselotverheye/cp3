@@ -3,14 +3,17 @@
 			<h1>Blackboard</h1>
 		</header>
 
-		<ul>
+
 			<form>
-				<li><input type="text" placeholder="name"></li>
-				<li><input type="text" placeholder="password"></li>
-				<li><input type="submit" value="submit" data-control="login"></li>
-				<li>or</li>
-				<li><input type="submit" value="register" data-control="register"></li>
+				<li><input type="text" name="loginEmail" placeholder="email"></li>
+				<li><input type="text" name="loginPass" placeholder="password"></li>
+				<li><input type="submit" value="login" data-control="login"></li>
 			</form>
+
+			<?php
+			if(!empty($_SESSION['user'])){
+
+			?>
 			<div class="user_controls">
 				<a href="#" class="control" data-control="add_project">new project</a>
 				<form class=".rolloutInput">
@@ -27,7 +30,11 @@
 				<a href="#" class="control" data-control="add_post-it">add post-it</a>
 				<a href="#" class="control" data-control="add_video">add video</a>
 		</div>
-		</ul>
+
+
+		<?php
+			}
+			?>
 
 		<div class="indicators">
 			<div class="control-bar">
