@@ -5,17 +5,25 @@ module.exports = (function(){
 		var result = template(imageData);
 		this.el = ( $(result) );
 		this.removeButton = $('.btn-delete');
-		console.log(this.removeButton);
-		bean.on(this, 'click', this.removeClickHandler.bind(this));
+		this.removeButton.on("click", this.deleteHandler);
+		bean.on(this.removeButton, 'click', this.removeClickHandler.bind(this));
+		initDrag();
 	}
 
-	BbImage.prototype.removeClickHandler = function(event) {
+	function initDrag(){
+		console.log("initDrag");
+	}
+
+
+	BbImage.prototype.deleteHandler = function(e){
+		console.log("delete");
+	}
+
+	BbImage.prototype.removeClickHandler = function(e) {
+		console.log("removen");
 		bean.fire(this, 'remove', this);
-	};
 
-	function mousedownHandler(e){
-		console.log(e);
-	}
+	};
 
 	return BbImage;
 })();

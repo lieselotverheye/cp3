@@ -71,18 +71,21 @@
 			//console.log(data + " is an array");
 			for(var i = 0; i<data.length;i++){
 				var bbImage = new BbImage(data[i]);
-				console.log(bbImage);
 				$('#container').append(bbImage.el);
+				//bean.on(bbImage.el, 'remove', BbImage.removeHandler.bind(bbImage.el));
 			}
 		}
 		else if(data instanceof String){
 			console.log(data + " is a string");
 		}
-
-
-
-
 	}
+
+/*
+	this.removeHandler = function(bbImage) {
+		console.log("in de remove handler");
+		this.el.removeChild(bbImage.el);
+	};
+*/
 
 	function add_post_it(){
 		var postit = new Postit();
