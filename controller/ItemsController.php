@@ -15,7 +15,28 @@ class ItemsController extends Controller {
 
 	public function overview() {
 
+		//LOGIN
+
+
+
+		if(!empty($_POST)){
+					$loginEmail = $_POST['ha'];
+
+
+		}
+
+					$resultArray = array(
+						'succes' => 'true',
+						'email' => $loginEmail
+						);
+
+
+
+					echo json_encode($resultArray);
+
+
 	}
+
 
 
 }

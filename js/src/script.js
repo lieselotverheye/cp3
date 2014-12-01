@@ -35,6 +35,8 @@
 		});
 		fetch_data();
 
+		handlelogin();
+
 	}
 
 	function fetch_data(){
@@ -45,6 +47,29 @@
 		var imageData2 = {image_url : "assets/images/2014-11-30-sunday-rec-projects-wiersma-family-crest.jpg"};
 		var imageArray = [imageData, imageData2];
 		add_image(imageArray);
+	}
+
+	function handlelogin(){
+
+		$('.loginknop').on('click', function(){
+			event.preventDefault();
+
+			var inputData = {
+				'ha' : $('.loginEmail').val(),
+				'loginPass' : $('.loginPass').val()
+			};
+
+			var loginAjax = $.post('http://localhost/whiteboard/cp3-eindopdracht-2DEV2-groep10/index.php?page=home', inputData);
+
+			loginAjax.done(function(data){
+
+				console.log("got data back" + data);
+
+			});
+
+
+		});
+
 	}
 
 	function add_project(){
