@@ -1,5 +1,9 @@
 (function(){
 	var BbImage = require('./classes/BbImage.js');
+	var BbVideo = require('./classes/BbVideo.js');
+	var Invite = require('./classes/Invite.js');
+	var Postit = require('./classes/Postit.js');
+	var Project = require('./classes/Project');
 
 	function clicked(e){
 		e.preventDefault();
@@ -33,11 +37,11 @@
 	}
 
 	function add_project(){
-		console.log("project add");
+		var project = new Project();
 	}
 
 	function invite_user(){
-		console.log("user invite");
+		var invite = new Invite();
 	}
 
 	function save_project(){
@@ -50,15 +54,14 @@
 
 	function add_image(){
 		var bbImage = new BbImage();
-		console.log(BbImage);
 	}
 
 	function add_post_it(){
-		console.log("add_post it");
+		var postit = new Postit();
 	}
 
 	function add_video(){
-		console.log("add video");
+		var bbVideo = new BbVideo();
 	}
 
 	init();
