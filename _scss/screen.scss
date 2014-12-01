@@ -138,6 +138,11 @@ header form{
 
 			background-color: #74a588;
 			color: #9ccfb1;
+
+			&:hover{
+						background-color: #87bf9e;
+						color: #d1eee7;
+					}
 		}
 	}
 
@@ -180,5 +185,46 @@ header form{
 				margin-left: 295px;
 			}
 
+
+}
+
+.project_controls{
+
+background-color: #42474c;
+padding: 10px 10px;
+
+	input{
+			background-color: #2c2f32;
+			color: #7d8b99;
+			display: inline-block;
+			text-transform: uppercase;
+			padding: 10px 12px 10px 12px;
+			letter-spacing: 2px;
+			text-decoration: none;
+			border: none;
+
+			&:hover{
+				background-color: #36393d;
+				color: #96a5b4;
+							transition: all 0.4s;
+			}
+
+		}
+
+		.upload{
+			background-color: #74a588;
+			color: #9ccfb1;
+
+			&:hover{
+						background-color: #87bf9e;
+						color: #d1eee7;
+					}
+
+		}
+
+		.containerrechts2{
+			display: inline;
+			margin-left: 208px;
+		}
 
 }

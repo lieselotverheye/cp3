@@ -21,24 +21,31 @@
 
 			<div class="user_controls">
 				<form method="post">
-				<input type="submit" class="control newproject" data-control="add_project" value="new project"/>
+						<input type="submit" class="control newproject" data-control="add_project" value="new project"/>
 
-					<input type="text" placeholder="project name"></li>
-					<input type="submit" class="rolloutInput" value="submit" data-control="new_project"></li>
+						<input type="text" placeholder="project name"></li>
+						<input type="submit" class="rolloutInput" value="submit" data-control="new_project"></li>
 
-				<div class="containerrechts">
-				<input type="submit" value="invite user" class="control" data-control="invite_user"/>
-				<input type="submit" value="save" class="control" data-control="save_project"/>
-				<input type="submit" value="delete"class="control" data-control="delete_project"/>
-			</div>
+					<div class="containerrechts">
+						<input type="submit" value="invite user" class="control" data-control="invite_user"/>
+						<input type="submit" value="save" class="control" data-control="save_project"/>
+						<input type="submit" value="delete"class="control" data-control="delete_project"/>
+					</div>
 				</form>
 
-		</div>
+			</div>
+
 			<div class="project_controls">
-				<a href="#" class="control" data-control="add_image">add image</a>
-				<a href="#" class="control" data-control="add_post-it">add post-it</a>
-				<a href="#" class="control" data-control="add_video">add video</a>
-		</div>
+				<input type="submit" value="add image" class="control" data-control="add_image"/>
+				<input type="submit" value="add post-it" class="control" data-control="add_post-it"/>
+				<input type="submit" value="add video" class="control" data-control="add_video"/>
+
+			<!--- dit komt er pas op als je op "add image" hebt gedrukt: -->
+			<div class="containerrechts2">
+				<input type="file" name="image" class="control" data-control="add_image"/>
+				<input type="submit" class="upload" name="upload" value="upload" class="control" data-control="upload_image"/>
+			</div>
+			</div>
 
 
 
