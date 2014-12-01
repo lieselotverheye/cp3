@@ -55,7 +55,7 @@
 			event.preventDefault();
 
 			var inputData = {
-				'ha' : $('.loginEmail').val(),
+				'loginEmail' : $('.loginEmail').val(),
 				'loginPass' : $('.loginPass').val()
 			};
 

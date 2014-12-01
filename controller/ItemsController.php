@@ -20,19 +20,31 @@ class ItemsController extends Controller {
 
 
 		if(!empty($_POST)){
-					$loginEmail = $_POST['ha'];
 
+
+
+					if(!empty($_POST['loginEmail'])){
+						$loginEmail = $_POST['loginEmail'];
+					}
+					if(!empty($_POST['loginPass'])){
+						$loginPass = $_POST['loginPass'];
+					}
+
+					$resultArray = array(
+											'succes' => 'true',
+											'email' => $loginEmail,
+											'pass' => $loginPass
+											);
 
 		}
 
-					$resultArray = array(
-						'succes' => 'true',
-						'email' => $loginEmail
-						);
 
 
+
+					if(!empty($resultArray['email'])){
 
 					echo json_encode($resultArray);
+				}
 
 
 	}
