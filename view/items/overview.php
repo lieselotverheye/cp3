@@ -18,19 +18,20 @@
 
 
 
-			<?php
-			if(!empty($_SESSION['user'])){
 
-			?>
 			<div class="user_controls">
-				<a href="#" class="control" data-control="add_project">new project</a>
-				<form method="post" class=".rolloutInput">
-					<input type="text" placeholder="password"></li>
-					<input type="submit" value="submit" data-control="login"></li>
+				<form method="post">
+				<input type="submit" class="control newproject" data-control="add_project" value="new project"/>
+
+					<input type="text" placeholder="project name"></li>
+					<input type="submit" class="rolloutInput" value="submit" data-control="new_project"></li>
+
+				<div class="containerrechts">
+				<input type="submit" value="invite user" class="control" data-control="invite_user"/>
+				<input type="submit" value="save" class="control" data-control="save_project"/>
+				<input type="submit" value="delete"class="control" data-control="delete_project"/>
+			</div>
 				</form>
-				<a href="#" class="control" data-control="invite_user">invite user</a>
-				<a href="#" class="control" data-control="save_project">save</a>
-				<a href="#" class="control" data-control="delete_project">delete</a>
 
 		</div>
 			<div class="project_controls">
@@ -40,9 +41,6 @@
 		</div>
 
 
-		<?php
-			}
-			?>
 
 		<div class="indicators">
 			<div class="control-bar">
