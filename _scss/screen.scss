@@ -7,6 +7,7 @@
 
 $zwart: #1D1F21;
 $oranje: #ed593b;
+$groen: #74a588;
 
 body {
 	font-size: 62.5%;
@@ -32,17 +33,19 @@ body {
 	margin: 0px auto;
 }
 
-/*body .title{
+body .title{
+	float: left;
 	text-transform: uppercase;
 	letter-spacing: 5px;
-	padding-top: 40px;
+	padding-top: 6px;
 	width: 150px;
 	margin: 0px auto;
 	font-family: 'gobold', verdana, sans-serif;
 	font-size: 1.9em;
 	color: #ffffff;
-	margin: 0px auto;
-}*/
+	margin-right: 250px;
+	margin-left: 9px;
+}
 
 body header{
 	width: 100%;
@@ -51,7 +54,7 @@ body header{
 
 header form{
 
-			padding: 23px;
+			padding: 18px;
 
 
 			input[type="text"], input[type="password"]{
@@ -106,7 +109,17 @@ header form{
 			}
 
 			.register{
-				margin-left: 400px;
+				height: 12px;
+				padding: 10px 12px 10px 12px;
+				background-color: #74a588;
+				color: #9ccfb1;
+				display: inline-block;
+					transform: translateY(-1px);
+
+					&:hover{
+						background-color: #87bf9e;
+						color: #d1eee7;
+					}
 			}
 
 

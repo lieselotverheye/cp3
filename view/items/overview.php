@@ -3,6 +3,8 @@
 
 			<form method="post">
 
+				<h1 class="title">Whiteboard</h1>
+
 				<input type="text" name="loginEmail" placeholder="email">
 				<input type="password" name="loginPass" placeholder="password">
 				<input type="submit" value="login" data-control="login">
