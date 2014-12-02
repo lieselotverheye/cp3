@@ -5,22 +5,23 @@ module.exports = (function(){
 		console.log('[BbImage] constructor');
 		var template = Handlebars.compile($('#imageTemplate').text());
 		var result = template(imageData);
-		this.el = ( $(result) );
-		//console.log(this.el);
+		//element = array pos 0 van HandleBars
+		this.el = ( $(result) )[0];
 		this.removeButton = $('.btn-delete');
-		bean.on(this.removeButton, 'click', this.removeClickHandler.bind(this));
+		this.removeButton.on("click", removeButtonHandler);
+		//bean.on(this.removeButton, 'click', this.removeClickHandler.bind(this));
 
 		var xpos = 200;
 		var ypos = 200;
 
-		this.el[0].style.left = xpos + 'px';
-		this.el[0].style.top = ypos + 'px';
+		this.el.style.left = xpos + 'px';
+		this.el.style.top = ypos + 'px';
 
 		this._mouseDownHandler = this.mouseDownHandler.bind(this);
 		this._mouseMoveHandler = this.mouseMoveHandler.bind(this);
 		this._mouseUpHandler = this.mouseUpHandler.bind(this);
 
-		this.el[0].addEventListener('mousedown', this._mouseDownHandler);
+		this.el.addEventListener('mousedown', this._mouseDownHandler);
 		console.log(this);
 	}
 
@@ -35,7 +36,7 @@ module.exports = (function(){
 		offsetY = event.offsetY;
 
 		//console.log( 'Offset x = ' + this.offsetX + ' | y = ' + this.offsetY);
-		console.log(window);
+
 		window.addEventListener('mousemove', this._mouseMoveHandler);
 		window.addEventListener('mouseup', this._mouseUpHandler);
 
@@ -43,9 +44,9 @@ module.exports = (function(){
 	};
 
 	BbImage.prototype.mouseMoveHandler = function( event ){
-		if((event.y + this.el[0].style.height) > 195){
-		this.el[0].style.left = (event.x - offsetX) +'px';
-		this.el[0].style.top = (event.y - offsetY) + 'px';
+		if((event.y + this.el.style.height) > 195){
+		this.el.style.left = (event.x - offsetX) +'px';
+		this.el.style.top = (event.y - offsetY) + 'px';
 		}
 		else{
 
@@ -63,9 +64,16 @@ module.exports = (function(){
 
 
 	BbImage.prototype.removeClickHandler = function(e) {
+		console.log("fire");
 		bean.fire(this, 'remove', this);
 
 	};
+
+	removeButtonHandler = function(){
+		console.log("in the remove button")
+			bean.fire(this, 'remove', this);
+
+	}
 
 	return BbImage;
 })();

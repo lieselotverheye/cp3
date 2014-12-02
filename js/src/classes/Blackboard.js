@@ -28,7 +28,7 @@ $clickcount = 0;
 	}
 
 
-	function init(){
+	function Blackboard(){
 		Array.prototype.forEach.call(document.getElementsByTagName("input"), function(input){
 			input.addEventListener("click",clicked);
 			if(!input.getAttribute("data-control")){
@@ -102,7 +102,7 @@ $clickcount = 0;
 			for(var i = 0; i<data.length;i++){
 				var bbImage = new BbImage(data[i]);
 				$('#container').append(bbImage.el);
-				//bean.on(bbImage.el, 'remove', BbImage.removeHandler.bind(bbImage.el));
+				bean.on(bbImage, 'remove', removeHandler);
 			}
 		}
 		else if(data instanceof String){
@@ -110,10 +110,16 @@ $clickcount = 0;
 		}
 	}
 
-	this.removeHandler = function(bbImage) {
+	function removeHandler(element){
+		console.log("schnauw");
+	}
+
+	/*
+	Blackboard.prototype.removeHandler = function(bbImage) {
 		console.log("aargh");
-		this.el.removeChild(bbImage.el);
+		//this.el.removeChild(bbImage.el);
 	};
+	*/
 
 	function add_post_it(){
 		var postit = new Postit();
@@ -122,8 +128,6 @@ $clickcount = 0;
 	function add_video(){
 		var bbVideo = new BbVideo();
 	}
-
-	init();
 	return Blackboard;
 })();
 
