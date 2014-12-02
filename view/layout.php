@@ -13,7 +13,9 @@
             <?php if(!empty($_SESSION['error'])): ?><div class="alert alert-danger"><?php echo $_SESSION['error'];?></div><?php endif; ?>
 
             <?php echo $content; ?>
+            <div class="board">
 
+            </div>
         </div>
 
     </body>

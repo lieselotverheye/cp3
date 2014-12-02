@@ -4,6 +4,7 @@ module.exports = (function(){
 	var Invite = require('./Invite');
 	var Postit = require('./Postit');
 	var Project = require('./Project');
+	var BOUNDARIES = {top: "190", bottom: "800", left: "0", right: ""}
 
 $clickcount = 0;
 
@@ -101,7 +102,7 @@ $clickcount = 0;
 			//console.log(data + " is an array");
 			for(var i = 0; i<data.length;i++){
 				var bbImage = new BbImage(data[i]);
-				$('#container').append(bbImage.el);
+				$('.board').append(bbImage.el);
 				bean.on(bbImage, 'remove', removeHandler);
 			}
 		}

@@ -1,7 +1,7 @@
 module.exports = (function(){
 	offsetX = 0;
 	offsetY = 0;
-	function BbImage(imageData) {
+	function BbImage(imageData, boundaries) {
 		console.log('[BbImage] constructor');
 		var template = Handlebars.compile($('#imageTemplate').text());
 		var result = template(imageData);
