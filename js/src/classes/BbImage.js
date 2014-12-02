@@ -10,8 +10,8 @@ module.exports = (function(){
 		this.removeButton = $('.btn-delete');
 		bean.on(this.removeButton, 'click', this.removeClickHandler.bind(this));
 
-		var xpos = 0;
-		var ypos = 0;
+		var xpos = 200;
+		var ypos = 200;
 
 		this.el[0].style.left = xpos + 'px';
 		this.el[0].style.top = ypos + 'px';
@@ -21,6 +21,7 @@ module.exports = (function(){
 		this._mouseUpHandler = this.mouseUpHandler.bind(this);
 
 		this.el[0].addEventListener('mousedown', this._mouseDownHandler);
+		console.log(this);
 	}
 
 	BbImage.prototype.mouseDownHandler = function( event ){
@@ -29,7 +30,7 @@ module.exports = (function(){
 		//console.log(this);
 		//console.log(this.naam);
 
-
+		event.preventDefault();
 		offsetX = event.offsetX;
 		offsetY = event.offsetY;
 
@@ -42,9 +43,13 @@ module.exports = (function(){
 	};
 
 	BbImage.prototype.mouseMoveHandler = function( event ){
+		if((event.y + this.el[0].style.height) > 195){
 		this.el[0].style.left = (event.x - offsetX) +'px';
 		this.el[0].style.top = (event.y - offsetY) + 'px';
+		}
+		else{
 
+		}
 
 	};
 
