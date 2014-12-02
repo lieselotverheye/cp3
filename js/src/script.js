@@ -29,9 +29,9 @@ $clickcount = 0;
 
 
 	function init(){
-		Array.prototype.forEach.call(document.getElementsByTagName("a"), function(a){
-			a.addEventListener("click",clicked);
-			if(!a.getAttribute("data-control")){
+		Array.prototype.forEach.call(document.getElementsByTagName("input"), function(input){
+			input.addEventListener("click",clicked);
+			if(!input.getAttribute("data-control")){
 				console.log("does not contain data control");
 			}
 		});
@@ -103,7 +103,6 @@ $clickcount = 0;
 				var bbImage = new BbImage(data[i]);
 				$('#container').append(bbImage.el);
 				//bean.on(bbImage.el, 'remove', BbImage.removeHandler.bind(bbImage.el));
-				bean.on(bbImage, 'remove', removeHandler.bind(bbImage));
 			}
 		}
 		else if(data instanceof String){
