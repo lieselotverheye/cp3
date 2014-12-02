@@ -6,7 +6,6 @@ module.exports = (function(){
 	var Project = require('./Project');
 	var BOUNDARIES = {top: "190", bottom: "800", left: "0", right: ""}
 
-$clickcount = 0;
 
 	function clicked(e){
 		e.preventDefault();
@@ -31,14 +30,15 @@ $clickcount = 0;
 
 	function Blackboard(){
 		Array.prototype.forEach.call(document.getElementsByTagName("input"), function(input){
-			input.addEventListener("click",clicked);
+
 			if(!input.getAttribute("data-control")){
 				console.log("does not contain data control");
+			}else{
+				input.addEventListener("click",clicked);
 			}
 		});
 		fetch_data();
 
-		handlelogin();
 
 	}
 
@@ -52,31 +52,6 @@ $clickcount = 0;
 		add_image(imageArray);
 	}
 
-	function handlelogin(){
-
-		$('.loginknop').on('click', function(){
-			event.preventDefault();
-
-
-			$clickcount += 1;
-			var inputData = {
-				'count' : 1,
-				'loginEmail' : $('.loginEmail').val(),
-				'loginPass' : $('.loginPass').val()
-			};
-
-			var loginAjax = $.post('http://localhost/whiteboard/cp3-eindopdracht-2DEV2-groep10/index.php?page=home', inputData);
-
-			loginAjax.done(function(data){
-
-				console.log("got data back" + data);
-
-			});
-
-
-		});
-
-	}
 
 	function add_project(){
 		var project = new Project();

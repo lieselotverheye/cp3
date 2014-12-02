@@ -3,14 +3,14 @@ require_once __DIR__ . '/DAO.php';
 class UserDAO extends DAO {
 
 	public function selectAll() {
-		$sql = "SELECT * FROM `users`";
+		$sql = "SELECT * FROM `board_users`";
 		$stmt = $this->pdo->prepare($sql);
 		$stmt->execute();
 		return $stmt->fetchAll(PDO::FETCH_ASSOC);
 	}
 
 	public function selectById($id) {
-		$sql = "SELECT * FROM `users` WHERE `id` = :id";
+		$sql = "SELECT * FROM `board_users` WHERE `id` = :id";
 		$stmt = $this->pdo->prepare($sql);
 		$stmt->bindValue(':id', $id);
 		$stmt->execute();
@@ -18,7 +18,7 @@ class UserDAO extends DAO {
 	}
 
 	public function selectByEmail($email) {
-		$sql = "SELECT * FROM `users` WHERE `email` = :email";
+		$sql = "SELECT * FROM `board_users` WHERE `email` = :email";
 		$stmt = $this->pdo->prepare($sql);
 		$stmt->bindValue(':email', $email);
 		$stmt->execute();
@@ -28,7 +28,7 @@ class UserDAO extends DAO {
 	public function insert($data) {
 		$errors = $this->getValidationErrors($data);
 		if(empty($errors)) {
-			$sql = "INSERT INTO `users` (`email`, `password`) VALUES (:email, :password)";
+			$sql = "INSERT INTO `board_users` (`email`, `password`) VALUES (:email, :password)";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->bindValue(':email', $data['email']);
 			$stmt->bindValue(':password', $data['password']);

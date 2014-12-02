@@ -1,14 +1,15 @@
 
 		<header>
 
-			<form method="post" action="login">
+			<form method="post" action="index.php?page=home">
 
 				<h1 class="title">Whiteboard</h1>
 
 				<input type="text" name="loginEmail" class="loginEmail" placeholder="email"/>
-				<span class="error"><?php if(!empty($errors['loginEmail']) && (!empty($_POST['count']))){ echo $errors['loginEmail']; } ?>
+				<span class="error"><?php if(!empty($errors['loginEmail'])){ echo $errors['loginEmail']; } ?></span>
 				<input type="password" name="loginPass" class="loginPass" placeholder="password"/>
-				<input  type="submit" value="login" class="loginknop" data-control="login"/>
+				<input type="submit" name="action" value="login"/>
+
 				<a href="index.php?page=register" class="register">register</a>
 
 			</form>
