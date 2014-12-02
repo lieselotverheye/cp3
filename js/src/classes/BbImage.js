@@ -44,12 +44,15 @@ module.exports = (function(){
 	};
 
 	BbImage.prototype.mouseMoveHandler = function( event ){
-		if((event.y + this.el.style.height) > 195){
+
+		if((event.y - offsetY) > 195){
 		this.el.style.left = (event.x - offsetX) +'px';
 		this.el.style.top = (event.y - offsetY) + 'px';
+		console.log(event.y - offsetY);
 		}
 		else{
-
+			//window.removeEventListener('mousemove', this._mouseMoveHandler);
+		//window.removeEventListener('mouseup', this._mouseUpHandler);
 		}
 
 	};
@@ -65,7 +68,7 @@ module.exports = (function(){
 
 	BbImage.prototype.removeClickHandler = function(e) {
 		console.log("fire");
-		bean.fire(this, 'remove', this);
+		bean.fire(this.removeButton, 'remove', this);
 
 	};
 
