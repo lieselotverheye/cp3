@@ -11,8 +11,8 @@ module.exports = (function(){
 		this.removeButton.on("click", removeButtonHandler);
 		//bean.on(this.removeButton, 'click', this.removeClickHandler.bind(this));
 
-		var xpos = 200;
-		var ypos = 200;
+		var xpos = 500;
+		var ypos = 300;
 
 		this.el.style.left = xpos + 'px';
 		this.el.style.top = ypos + 'px';
@@ -73,7 +73,7 @@ module.exports = (function(){
 	};
 
 	removeButtonHandler = function(){
-		console.log("in the remove button")
+		console.log("in the remove button");
 			bean.fire(this, 'remove', this);
 
 	}

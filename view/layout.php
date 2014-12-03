@@ -11,9 +11,7 @@
         <div id="container">
 
             <?php echo $content; ?>
-            <div class="board">
 
-            </div>
         </div>
 
     </body>

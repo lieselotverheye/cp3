@@ -16,6 +16,10 @@ $routes = array(
 	'logout' => array(
 		'controller' => 'Users',
 		'action' => 'logout'
+	),
+	'checkusername' => array(
+		'controller' => 'Items',
+		'action' => 'checkUsername'
 	)
 );
 
@@ -42,4 +46,8 @@ require_once WWW_ROOT . 'controller' . DS . $controllerName . ".php";
 $controllerObj = new $controllerName();
 $controllerObj->route = $route;
 $controllerObj->filter();
-$controllerObj->render();
+
+if ( ! isset($_SERVER['HTTP_X_REQUESTED_WITH']) ) {
+	$controllerObj->render();
+}
+

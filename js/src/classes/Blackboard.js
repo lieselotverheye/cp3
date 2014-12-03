@@ -4,7 +4,7 @@ module.exports = (function(){
 	var Invite = require('./Invite');
 	var Postit = require('./Postit');
 	var Project = require('./Project');
-	var BOUNDARIES = {top: "190", bottom: "800", left: "0", right: ""}
+	var BOUNDARIES = {top: "190", bottom: "800", left: "0", right: ""};
 
 
 	function clicked(e){

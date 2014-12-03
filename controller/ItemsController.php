@@ -17,18 +17,123 @@ class ItemsController extends Controller {
 
 		//LOGIN
 
-		if(!empty($_POST['action'])) {
+		/*if(!empty($_POST['action'])) {
 			if($_POST['action'] == 'login') {
 				$this->_handleLogin();
-			} else if($_POST['action'] == 'register') {
-				$this->_handleRegister();
 			}
+		}*/
+		$email = '';
+		$pass = '';
+		$errors = array();
+
+		if(!empty($_POST)){
+			$email = $_POST['loginEmail'];
+			$pass = $_POST['loginPass'];
+
+			if(empty($email)){
+				$errors['loginEmail']="enter an email";
+			}
+
+			if(empty($pass)){
+				$errors['loginPass']="enter a password";
+			}
+
 		}
 
 
+		$resultArray = array(
+				'succes' => true,
+				'email' => $email,
+				'pass' => $pass,
+			);
 
+
+		//checken als het een ajax request is en dan loggen:::::: !!!!!!
+		if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])
+		    && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
+		   // I'm AJAX!
+
+			echo json_encode( $resultArray);
+			die();
+		}
+	}
+
+
+	public function checkUsername(){
+
+
+		$data = array();
+
+		if( !empty($_POST) ){
+
+			$email = $_POST['email'];
+			$password = $_POST['password'];
+
+			$existing = $this->userDAO->selectByEmail( $email );
+
+			if( empty($existing) ){
+
+				$data['success'] = false;
+				$data['errors'] = array(
+						'User does not exist'
+				);
+
+			}else{
+
+				$hasher = new \Phpass\Hash;
+								//if empty(id -> redirect!)
+
+				if ($hasher->checkPassword( $password, $existing['pass'])) {
+					$_SESSION['user'] = $existing;
+					$_SESSION['info'] = "Logged in successfully!";
+
+					$data['success'] = true;
+
+				}else{
+					$data['success'] = false;
+					$data['errors'] = array(
+							'Password is not correct'
+					);
+				}
+
+			}
+
+
+			/*
+			if(empty($test)){
+				$errors['loginEmail'] = 'Please enter your email';
+			}
+
+				if(empty($errors)){
+					$existing = $this->userDAO->selectByEmail($_POST['loginEmail']);
+					if(!empty($existing)) {
+						$hasher = new \Phpass\Hash;
+								//if empty(id -> redirect!)
+
+					if ($hasher->checkPassword($_POST['loginPass'], $existing['pass'])) {
+					$_SESSION['user'] = $existing;
+					$_SESSION['info'] = "Logged in successfully!";
+					echo true;
+					//$this->redirect('index.php?page=home');
+				}
+
+
+			}*/
+
+
+		} else{
+
+			$data['success'] = false;
+				$data['errors'] = array(
+						'POST data does not exist'
+				);
+		}
+
+
+		echo json_encode($data);
 
 	}
+
 
 
 	private function _handleLogin() {
@@ -49,7 +154,7 @@ class ItemsController extends Controller {
 				if ($hasher->checkPassword($_POST['loginPass'], $existing['pass'])) {
 					$_SESSION['user'] = $existing;
 					$_SESSION['info'] = "Logged in successfully!";
-					$this->redirect('index.php?page=item&key=0');
+					$this->redirect('index.php?page=home');
 				} else {
 					$_SESSION['error'] = 'Unknown username / password';
 				}
@@ -63,44 +168,6 @@ class ItemsController extends Controller {
 	}
 
 
-
-
-	private function _handleRegister() {
-		$errors = array();
-
-		print_r($errors);
-		if(empty($_POST['registerEmail'])) {
-			$errors['registerEmail'] = 'Please enter your email';
-		} else {
-			$existing = $this->userDAO->selectByEmail($_POST['registerEmail']);
-			if(!empty($existing)) {
-				$errors['registerEmail'] = 'Email address is already in use';
-			}
-		}
-		if(empty($_POST['registerPassword'])) {
-			$errors['registerPassword'] = 'Please enter a password';
-		}
-
-		if(empty($_POST['registerPassword2'])) {
-			$errors['registerPassword2'] = 'Please confirm password';
-		}
-
-		if(empty($errors)) {
-			$hasher = new \Phpass\Hash;
-			$inserteduser = $this->userDAO->insert(array(
-				'email' => $_POST['registerEmail'],
-				'password' => $hasher->hashPassword($_POST['registerPassword']),
-			));
-			if(!empty($inserteduser)) {
-				$_SESSION['info'] = 'registration successful';
-				$_SESSION['user'] = $inserteduser;
-				$this->redirect('index.php?page=home');
-
-			}
-		}
-		$_SESSION['error'] = 'registration failed';
-		$this->set('errors', $errors);
-	}
 
 
 

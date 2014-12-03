@@ -339,7 +339,7 @@ a + .error{
  		color: #ffffff;
  		float: right;
  		margin-top: 8px;
- 		margin-right: 20px;
+ 		margin-right: 7px;
  		font-size: 1.3em;
  }
 
@@ -363,5 +363,43 @@ a + .error{
 						color: #f8dad4;
 						transition: all 0.2s;
 					}
+ }
+
+ .selectprojects{
+ 		float: right;
+ 		color: $zwart;
+		background-color: #565d64;
+		height: 31px;
+		border-radius: 0px;
+    border:none;
+    margin-right: 25px;
+    outline:none;
+ }
+
+.board{
+	height: 850px;
+}
+
+ .boardheader{
+ 		background-color: #ECECEC;
+
+
+ 		h1{
+ 			text-transform: uppercase;
+ 			letter-spacing: 2px;
+ 			font-size: 1.3em;
+ 			text-align: center;
+ 			padding: 5px 0px;
+ 				color: #ffffff;
+ 			background-color: #999692;
+ 		}
+
+ 		p{
+ 			padding: 5px 10px;
+ 			font-size: 1.1em;
+ 			color: #999692;
+
+ 		}
+
  }
 

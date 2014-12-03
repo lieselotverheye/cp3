@@ -1,6 +1,5 @@
 
 		<header>
-
 			<form method="post" action="index.php?page=home">
 
 				<h1 class="title">Whiteboard</h1>
@@ -10,7 +9,7 @@
 				?>
 				<input type="text" name="loginEmail" class="loginEmail" value="<?php if(!empty($_POST['loginEmail'])){echo $_POST['loginEmail'];} ?>" placeholder="email"/>
 				<input type="password" value="<?php if(!empty($_POST['loginPass'])){echo $_POST['loginPass'];} ?>" name="loginPass" class="loginPass" placeholder="password"/>
-				<input type="submit" name="action" value="login"/>
+				<input class="loginbutton" type="submit" name="action" value="login"/>
 
 				<a href="index.php?page=register" class="register">register</a>
 				<span class="error"><?php if(!empty($errors['loginEmail'])){ echo $errors['loginEmail']; } ?></span>
@@ -18,6 +17,9 @@
 				<?php
 				}else{
 					echo "<a class=\"logout\" href=\"index.php?page=logout\">Logout</a>";
+					echo "<select class=\"selectprojects\">";
+					echo "<option value=\"empty\">My projects</option>";
+					echo "</select>";
 					echo "<p class=\"loggedin\">logged in as " . $_SESSION['user']['email'] . "</p>";
 				}
 				?>
@@ -30,7 +32,8 @@
 
 
 
-
+			<?php if(!empty($_SESSION['user'])){
+				?>
 
 			<div class="user_controls">
 				<form method="post">
@@ -59,6 +62,9 @@
 				<input type="submit" class="upload" name="upload" value="upload" class="control" data-control="upload_image"/>
 			</div>
 			</div>
+			<?php
+				}
+			?>
 
 			<div id="sessionmessages">
 
@@ -74,3 +80,13 @@
 				<div class="wrap">&nbsp;</div>
 			</div>
 		</div>
+
+
+		        <div class="board">
+		        	<header class="boardheader">
+		        		<h1>Project Title here</h1>
+		        		<p>users working on this project:</p>
+
+		        	</header>
+
+            </div>
