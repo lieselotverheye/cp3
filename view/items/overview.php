@@ -17,6 +17,7 @@
 				<span class="error errorpassword"><?php if(!empty($errors['loginPass'])){ echo $errors['loginPass']; } ?></span>
 				<?php
 				}else{
+					echo "<a class=\"logout\" href=\"index.php?page=logout\">Logout</a>";
 					echo "<p class=\"loggedin\">logged in as " . $_SESSION['user']['email'] . "</p>";
 				}
 				?>

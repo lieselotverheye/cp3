@@ -5,29 +5,33 @@ define('DS', DIRECTORY_SEPARATOR);
 define('WWW_ROOT', __DIR__ . DS);
 
 $routes = array(
-    'home' => array(
-        'controller' => 'Items',
-        'action' => 'overview'
-    ),
-    'register' => array(
-    	'controller' => 'Users',
-    	'action' => 'register'
-		)
+	'home' => array(
+		'controller' => 'Items',
+		'action' => 'overview'
+	),
+	'register' => array(
+		'controller' => 'Users',
+		'action' => 'register'
+	),
+	'logout' => array(
+		'controller' => 'Users',
+		'action' => 'logout'
+	)
 );
 
 if(empty($_GET['page'])) {
-    $_GET['page'] = 'home';
+	$_GET['page'] = 'home';
 }
 
 /*
 if(empty($_SESSION['user']) && $_GET['page'] != 'login-register'){
-    header('Location: index.php?page=login-register');
-    exit();
+	header('Location: index.php?page=login-register');
+	exit();
 }*/
 
 if(empty($routes[$_GET['page']])) {
-    header('Location: index.php');
-    exit();
+	header('Location: index.php');
+	exit();
 }
 
 $route = $routes[$_GET['page']];

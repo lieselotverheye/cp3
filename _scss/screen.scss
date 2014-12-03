@@ -55,7 +55,7 @@ body header{
 header form{
 
 			padding: 18px 18px 12px 18px;
-
+			overflow: auto;
 
 			input[type="text"], input[type="password"]{
 					border: none;
@@ -335,8 +335,33 @@ a + .error{
 
  }
 
-
  .loggedin{
  		color: #ffffff;
+ 		float: right;
+ 		margin-top: 8px;
+ 		margin-right: 20px;
+ 		font-size: 1.3em;
+ }
+
+
+ .logout{
+ 				float: right;
+ 				height: 12px;
+ 				width: 60px;
+				margin-bottom: 5px;
+				padding: 9px 12px 9px 12px;
+				background-color: #ed593b;
+				text-transform: uppercase;
+				letter-spacing: 2px;
+				font-size: 1.2em;
+				color: #f5baae;
+				text-decoration: none;
+				border: none;
+
+				&:hover{
+						background-color: #f3745b;
+						color: #f8dad4;
+						transition: all 0.2s;
+					}
  }
 
