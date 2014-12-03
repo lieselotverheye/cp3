@@ -37,7 +37,12 @@ module.exports = (function(){
 				input.addEventListener("click",clicked);
 			}
 		});
+
+		if(document.URL.search("home") != -1 ){
+
 		fetch_data();
+
+		}
 
 
 	}

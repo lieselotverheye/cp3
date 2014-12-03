@@ -28,7 +28,7 @@ class UserDAO extends DAO {
 	public function insert($data) {
 		$errors = $this->getValidationErrors($data);
 		if(empty($errors)) {
-			$sql = "INSERT INTO `board_users` (`email`, `password`) VALUES (:email, :password)";
+			$sql = "INSERT INTO `board_users` (`email`, `pass`) VALUES (:email, :password)";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->bindValue(':email', $data['email']);
 			$stmt->bindValue(':password', $data['password']);

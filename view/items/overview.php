@@ -5,12 +5,23 @@
 
 				<h1 class="title">Whiteboard</h1>
 
-				<input type="text" name="loginEmail" class="loginEmail" placeholder="email"/>
-				<span class="error"><?php if(!empty($errors['loginEmail'])){ echo $errors['loginEmail']; } ?></span>
-				<input type="password" name="loginPass" class="loginPass" placeholder="password"/>
+				<?php
+				if(empty($_SESSION['user'])){
+				?>
+				<input type="text" name="loginEmail" class="loginEmail" value="<?php if(!empty($_POST['loginEmail'])){echo $_POST['loginEmail'];} ?>" placeholder="email"/>
+				<input type="password" value="<?php if(!empty($_POST['loginPass'])){echo $_POST['loginPass'];} ?>" name="loginPass" class="loginPass" placeholder="password"/>
 				<input type="submit" name="action" value="login"/>
 
 				<a href="index.php?page=register" class="register">register</a>
+				<span class="error"><?php if(!empty($errors['loginEmail'])){ echo $errors['loginEmail']; } ?></span>
+				<span class="error errorpassword"><?php if(!empty($errors['loginPass'])){ echo $errors['loginPass']; } ?></span>
+				<?php
+				}else{
+					echo "<p class=\"loggedin\">logged in as " . $_SESSION['user']['email'] . "</p>";
+				}
+				?>
+
+
 
 			</form>
 
@@ -47,6 +58,13 @@
 				<input type="submit" class="upload" name="upload" value="upload" class="control" data-control="upload_image"/>
 			</div>
 			</div>
+
+			<div id="sessionmessages">
+
+						<?php if(!empty($_SESSION['info'])): ?><div class="alert alert-success"><?php echo $_SESSION['info'];?></div><?php endif; ?>
+            <?php if(!empty($_SESSION['error'])): ?><div class="alert alert-danger"><?php echo $_SESSION['error'];?></div><?php endif; ?>
+      </div>
+
 
 
 

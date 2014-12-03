@@ -54,7 +54,7 @@ body header{
 
 header form{
 
-			padding: 18px;
+			padding: 18px 18px 12px 18px;
 
 
 			input[type="text"], input[type="password"]{
@@ -238,7 +238,105 @@ padding: 10px 10px;
 	width: 960px;
 }
 
+.errorpassword{
+	position: absolute;
+	left: 778px;
+}
+
 .error{
 	display: inline-block;
 	color: $oranje;
+	margin-top:5px;
+	margin-left: 57px;
 }
+
+a + .error{
+	margin-left: 410px;
+}
+
+//session info / session error messages
+.alert{
+	text-align: center;
+	padding: 10px;
+	font-size: 1.2em;
+	text-transform: uppercase;
+}
+
+.alert-success{
+	background-color: #74a588;
+	color: #9ccfb1;
+}
+
+
+.alert-danger{
+	background-color: #F3745B;
+	color: #FFBDAD;
+}
+
+
+ .registertitle{
+ 	text-align: center;
+ 	text-transform: uppercase;
+	letter-spacing: 5px;
+	padding: 30px 0px 30px 0px;
+	font-family: 'gobold', verdana, sans-serif;
+	font-size: 1.9em;
+	color: #ffffff;
+	width: 100%;
+	background-color: $zwart;
+ }
+
+ #registerForm{
+ 	width: 280px;
+ 	margin: 0px auto;
+
+		input[type="text"], input[type="password"]{
+						border: none;
+						color: $zwart;
+						padding: 8px;
+						font-size: 1.3em;
+						background-color: #565d64;
+						outline: none;
+						display: block;
+
+						&:focus{
+							background-color: #8e99a5;
+							transition: all 0.4s;
+						}
+				}
+
+		label{
+			display: block;
+			margin-top: 15px;
+			font-size: 1.3em;
+		}
+
+		input[type="submit"]{
+			height: 32px;
+			width: 162px;
+			margin-top: 10px;
+			padding: 9px 12px 9px 12px;
+			background-color: #74a588;
+			color: #9ccfb1;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			font-size: 1.2em;
+			text-decoration: none;
+			border: none;
+			display: block;
+
+			&:hover{
+						background-color: #87bf9e;
+						color: #d1eee7;
+					}
+		}
+
+
+
+ }
+
+
+ .loggedin{
+ 		color: #ffffff;
+ }
+
