@@ -1,8 +1,6 @@
 module.exports = (function(){
-	offsetX = 0;
-	offsetY = 0;
 	function BbImage(imageData, position, boundaries) {
-		console.log('[BbImage] constructor', 'top boundaries are' + boundaries.top);
+		console.log('[BbImage] constructor', 'top boundaries are ' + boundaries.top);
 		var template = Handlebars.compile($('#imageTemplate').text());
 		var result = template(imageData);
 		//element = array pos 0 van HandleBars
@@ -10,8 +8,8 @@ module.exports = (function(){
 		this.boundaries = boundaries;
 
 		this.removeButton = $('.btn-delete');
-		this.removeButton.on("click", removeButtonHandler);
-		//bean.on(this.removeButton, 'click', this.removeClickHandler.bind(this));
+		//this.removeButton.on("click", removeButtonHandler);
+		bean.on(this.removeButton, 'click', this.removeClickHandler.bind(this));
 
 		var xpos = position.xPos;
 		var ypos = position.yPos;
@@ -42,13 +40,14 @@ module.exports = (function(){
 		window.addEventListener('mousemove', this._mouseMoveHandler);
 		window.addEventListener('mouseup', this._mouseUpHandler);
 
+		//class toekenennen met een drop shadow
 
 	};
 
 	BbImage.prototype.mouseMoveHandler = function( event ){
 
 		if((event.y - offsetY) > this.boundaries.top){
-		this.el.style.left = (event.x - offsetX) +'px';
+		this.el.style.left = (event.x - offsetX ) +'px';
 		this.el.style.top = (event.y - offsetY) + 'px';
 		console.log(event.y - offsetY);
 		}
@@ -70,7 +69,7 @@ module.exports = (function(){
 
 	BbImage.prototype.removeClickHandler = function(e) {
 		console.log("fire");
-		bean.fire(this.removeButton, 'remove', this);
+		bean.fire(this, 'remove', this);
 
 	};
 

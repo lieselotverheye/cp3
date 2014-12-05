@@ -9,7 +9,6 @@
 
 
         <div id="container">
-
             <?php echo $content; ?>
 
         </div>
@@ -21,6 +20,12 @@
     	<script id="imageTemplate" type="text/template">
     		<div class='image'>
 		       <img src="{{{image_url}}}">
+		      <a href="#" class="btn-delete">delete</a>
+		      </div>
+			</script>
+			<script id="videoTemplate" type="text/template">
+    		<div class='video'>
+		       <video src="{{{video_url}}}">
 		      <a href="#" class="btn-delete">delete</a>
 		      </div>
 			</script>

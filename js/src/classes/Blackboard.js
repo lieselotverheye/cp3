@@ -4,7 +4,8 @@ module.exports = (function(){
 	var Invite = require('./Invite');
 	var Postit = require('./Postit');
 	var Project = require('./Project');
-	var BOUNDARIES = {top: "190", bottom: "800", left: "0", right: ""}, position = {xPos : 500, yPos : 300};
+	var BOUNDARIES = {top: "190", bottom: "800", left: "0", right: ""};
+	var current
 
 
 	function clicked(e){
@@ -18,7 +19,7 @@ module.exports = (function(){
 			break;
 			case "delete_project" : delete_project();
 			break;
-			case "add_image": add_image({image_url : "assets/images/2014-11-30-sunday-rec-projects-bucks-dinosaurs.jpg"});
+			case "add_image": add_image();
 			break;
 			case "add_post-it" : add_post_it();
 			break;
@@ -75,19 +76,25 @@ module.exports = (function(){
 		console.log("delete_project");
 	}
 
-	function add_image(data){
-		var bbImage;
+	function add_bbObject(uploadedURL){
+		//kijken welk dataType het is, als het een array is, door bv alles in te laden doen we een for loop
+		//als het een string is door maar 1 object toe te voegen, voegen we maar 1 object toe.
+		//code is dan korter
+
+		make_image();
+	}
+
+	function make_image(data){
 		if(data instanceof Array){
 			//console.log(data + " is an array");
 			for(var i = 0; i<data.length;i++){
-				bbImage = new BbImage(data[i], position, BOUNDARIES);
+				var bbImage = new BbImage(data[i]);
 				$('.board').append(bbImage.el);
-				bean.on(bbImage, 'remove', removeHandler);
+				bean.on(bbImage, 'remove', removeHandler.bind(this));
 			}
 		}
-		else if(typeof(data) === "object"){
-			bbImage = new BbImage(data, position, BOUNDARIES);
-			$('.board').append(bbImage.el);
+		else if(data instanceof String){
+			console.log(data + " is a string");
 		}
 	}
 
