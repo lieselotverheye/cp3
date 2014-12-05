@@ -18,7 +18,7 @@ module.exports = (function(){
 			break;
 			case "delete_project" : delete_project();
 			break;
-			case "add_image" : add_image();
+			case "add_image": add_image({image_url : "assets/images/2014-11-30-sunday-rec-projects-bucks-dinosaurs.jpg"});
 			break;
 			case "add_post-it" : add_post_it();
 			break;
@@ -28,11 +28,12 @@ module.exports = (function(){
 	}
 
 
-	function Blackboard(){
+	function Blackboard(el){
+		this.el = el;
 		Array.prototype.forEach.call(document.getElementsByTagName("input"), function(input){
 
 			if(!input.getAttribute("data-control")){
-				console.log("does not contain data control");
+				console.log(input + "does not contain data control");
 			}else{
 				input.addEventListener("click",clicked);
 			}
@@ -75,19 +76,18 @@ module.exports = (function(){
 	}
 
 	function add_image(data){
-		//kijken welk dataType het is, als het een array is, door bv alles in te laden doen we een for loop
-		//als het een string is door maar 1 object toe te voegen, voegen we maar 1 object toe.
-		//code is dan korter
+		var bbImage;
 		if(data instanceof Array){
 			//console.log(data + " is an array");
 			for(var i = 0; i<data.length;i++){
-				var bbImage = new BbImage(data[i]);
+				bbImage = new BbImage(data[i]);
 				$('.board').append(bbImage.el);
 				bean.on(bbImage, 'remove', removeHandler);
 			}
 		}
-		else if(data instanceof String){
-			console.log(data + " is a string");
+		else if(typeof(data) === "object"){
+			bbImage = new BbImage(data);
+			$('.board').append(bbImage.el);
 		}
 	}
 
