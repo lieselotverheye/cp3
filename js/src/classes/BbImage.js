@@ -1,18 +1,20 @@
 module.exports = (function(){
 	offsetX = 0;
 	offsetY = 0;
-	function BbImage(imageData, boundaries) {
-		console.log('[BbImage] constructor');
+	function BbImage(imageData, position, boundaries) {
+		console.log('[BbImage] constructor', 'top boundaries are' + boundaries.top);
 		var template = Handlebars.compile($('#imageTemplate').text());
 		var result = template(imageData);
 		//element = array pos 0 van HandleBars
 		this.el = ( $(result) )[0];
+		this.boundaries = boundaries;
+
 		this.removeButton = $('.btn-delete');
 		this.removeButton.on("click", removeButtonHandler);
 		//bean.on(this.removeButton, 'click', this.removeClickHandler.bind(this));
 
-		var xpos = 500;
-		var ypos = 300;
+		var xpos = position.xPos;
+		var ypos = position.yPos;
 
 		this.el.style.left = xpos + 'px';
 		this.el.style.top = ypos + 'px';
@@ -45,7 +47,7 @@ module.exports = (function(){
 
 	BbImage.prototype.mouseMoveHandler = function( event ){
 
-		if((event.y - offsetY) > 195){
+		if((event.y - offsetY) > this.boundaries.top){
 		this.el.style.left = (event.x - offsetX) +'px';
 		this.el.style.top = (event.y - offsetY) + 'px';
 		console.log(event.y - offsetY);

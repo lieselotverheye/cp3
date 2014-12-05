@@ -4,7 +4,7 @@ module.exports = (function(){
 	var Invite = require('./Invite');
 	var Postit = require('./Postit');
 	var Project = require('./Project');
-	var BOUNDARIES = {top: "190", bottom: "800", left: "0", right: ""};
+	var BOUNDARIES = {top: "190", bottom: "800", left: "0", right: ""}, position = {xPos : 500, yPos : 300};
 
 
 	function clicked(e){
@@ -80,13 +80,13 @@ module.exports = (function(){
 		if(data instanceof Array){
 			//console.log(data + " is an array");
 			for(var i = 0; i<data.length;i++){
-				bbImage = new BbImage(data[i]);
+				bbImage = new BbImage(data[i], position, BOUNDARIES);
 				$('.board').append(bbImage.el);
 				bean.on(bbImage, 'remove', removeHandler);
 			}
 		}
 		else if(typeof(data) === "object"){
-			bbImage = new BbImage(data);
+			bbImage = new BbImage(data, position, BOUNDARIES);
 			$('.board').append(bbImage.el);
 		}
 	}
