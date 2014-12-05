@@ -76,8 +76,7 @@ module.exports = (function(){
 	removeButtonHandler = function(){
 		console.log("in the remove button");
 			bean.fire(this, 'remove', this);
-
-	}
+	};
 
 	return BbVideo;
 })();

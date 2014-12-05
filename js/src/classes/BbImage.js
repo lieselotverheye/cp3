@@ -3,12 +3,10 @@ module.exports = (function(){
 		console.log('[BbImage] constructor', 'top boundaries are ' + boundaries.top);
 		var template = Handlebars.compile($('#imageTemplate').text());
 		var result = template(imageData);
-		//element = array pos 0 van HandleBars
 		this.el = ( $(result) )[0];
 		this.boundaries = boundaries;
 
-		this.removeButton = $('.btn-delete');
-		//this.removeButton.on("click", removeButtonHandler);
+		this.removeButton = ($(this.el).find('.btn-delete')[0])
 		bean.on(this.removeButton, 'click', this.removeClickHandler.bind(this));
 
 		var xpos = position.xPos;
@@ -22,7 +20,6 @@ module.exports = (function(){
 		this._mouseUpHandler = this.mouseUpHandler.bind(this);
 
 		this.el.addEventListener('mousedown', this._mouseDownHandler);
-		console.log(this);
 	}
 
 	BbImage.prototype.mouseDownHandler = function( event ){
@@ -68,16 +65,9 @@ module.exports = (function(){
 
 
 	BbImage.prototype.removeClickHandler = function(e) {
-		console.log("fire");
 		bean.fire(this, 'remove', this);
 
 	};
-
-	removeButtonHandler = function(){
-		console.log("in the remove button");
-			bean.fire(this, 'remove', this);
-
-	}
 
 	return BbImage;
 })();

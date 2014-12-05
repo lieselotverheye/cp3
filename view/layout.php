@@ -20,7 +20,7 @@
     	<script id="imageTemplate" type="text/template">
     		<div class='image'>
 		       <img src="{{{image_url}}}">
-		      <a href="#" class="btn-delete">delete</a>
+		      <input type="submit" value="delete" class="btn-delete"></input>
 		      </div>
 			</script>
 			<script id="videoTemplate" type="text/template">

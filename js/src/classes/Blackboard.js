@@ -5,7 +5,7 @@ module.exports = (function(){
 	var Postit = require('./Postit');
 	var Project = require('./Project');
 	var BOUNDARIES = {top: "190", bottom: "800", left: "0", right: ""};
-	var current
+	var position = {xPos: 500, yPos: 500};
 
 
 	function clicked(e){
@@ -32,7 +32,6 @@ module.exports = (function(){
 	function Blackboard(el){
 		this.el = el;
 		Array.prototype.forEach.call(document.getElementsByTagName("input"), function(input){
-
 			if(!input.getAttribute("data-control")){
 				console.log(input + "does not contain data control");
 			}else{
@@ -76,19 +75,11 @@ module.exports = (function(){
 		console.log("delete_project");
 	}
 
-	function add_bbObject(uploadedURL){
-		//kijken welk dataType het is, als het een array is, door bv alles in te laden doen we een for loop
-		//als het een string is door maar 1 object toe te voegen, voegen we maar 1 object toe.
-		//code is dan korter
-
-		make_image();
-	}
-
-	function make_image(data){
+	function add_image(data){
 		if(data instanceof Array){
 			//console.log(data + " is an array");
 			for(var i = 0; i<data.length;i++){
-				var bbImage = new BbImage(data[i]);
+				var bbImage = new BbImage(data[i], position, BOUNDARIES);
 				$('.board').append(bbImage.el);
 				bean.on(bbImage, 'remove', removeHandler.bind(this));
 			}
@@ -102,12 +93,12 @@ module.exports = (function(){
 		console.log("schnauw");
 	}
 
-	/*
+
 	Blackboard.prototype.removeHandler = function(bbImage) {
 		console.log("aargh");
 		//this.el.removeChild(bbImage.el);
 	};
-	*/
+
 
 	function add_post_it(){
 		var postit = new Postit();
