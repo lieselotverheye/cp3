@@ -7,7 +7,6 @@ module.exports = (function(){
 	var BOUNDARIES = {top: "190", bottom: "800", left: "0", right: ""};
 	var position = {xPos: 500, yPos: 500};
 
-
 	function clicked(e){
 		e.preventDefault();
 			switch(e.currentTarget.getAttribute("data-control")){
@@ -31,6 +30,7 @@ module.exports = (function(){
 
 	function Blackboard(el){
 		this.el = el;
+
 		Array.prototype.forEach.call(document.getElementsByTagName("input"), function(input){
 			if(!input.getAttribute("data-control")){
 				console.log(input + "does not contain data control");
@@ -90,14 +90,10 @@ module.exports = (function(){
 	}
 
 	function removeHandler(element){
-		console.log("schnauw");
+		console.log(this.el);
+		$('.board')[0].removeChild(element.el);
+		console.log(element);
 	}
-
-
-	Blackboard.prototype.removeHandler = function(bbImage) {
-		console.log("aargh");
-		//this.el.removeChild(bbImage.el);
-	};
 
 
 	function add_post_it(){

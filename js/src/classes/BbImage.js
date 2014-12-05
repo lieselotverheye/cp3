@@ -6,7 +6,7 @@ module.exports = (function(){
 		this.el = ( $(result) )[0];
 		this.boundaries = boundaries;
 
-		this.removeButton = ($(this.el).find('.btn-delete')[0])
+		this.removeButton = ($(this.el).find('.btn-delete')[0]);
 		bean.on(this.removeButton, 'click', this.removeClickHandler.bind(this));
 
 		var xpos = position.xPos;

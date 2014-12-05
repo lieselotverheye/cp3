@@ -3,7 +3,7 @@
 	var Loginregister = require('./classes/Loginregister');
 
 	function init(){
-		new Blackboard($('body'));
+		new Blackboard(document.querySelector('.board'));
 		new Loginregister();
 	}
 	init();
