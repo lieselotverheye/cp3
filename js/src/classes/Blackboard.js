@@ -4,10 +4,11 @@ module.exports = (function(){
 	var Invite = require('./Invite');
 	var Postit = require('./Postit');
 	var Project = require('./Project');
-	var BOUNDARIES = {top: "190", bottom: "800", left: "0", right: ""};
+	var BOUNDARIES = {top: "190", bottom: "550", left: "0", right: ""};
 	var position = {xPos: 500, yPos: 500};
 	var newImage = {image_url : "assets/images/2014-11-30-sunday-rec-projects-bucks-dinosaurs.jpg"};
 	var board_elements = [];
+	var currentProject;
 
 	function clicked(e){
 		e.preventDefault();
@@ -55,6 +56,7 @@ module.exports = (function(){
 		//data wordt zogezegd gehaald, stel nu dat we wat image objects hebben met daarin een url, xpos en ypos;
 		//container.innerHMTL = "";
 		// for each item in de array, een image aanmaken
+		currentProject = new Project();
 		var imageData = {image_url : "assets/images/2014-11-30-sunday-rec-projects-bucks-dinosaurs.jpg"};
 		var imageData2 = {image_url : "assets/images/2014-11-30-sunday-rec-projects-wiersma-family-crest.jpg"};
 		var imageArray = [imageData, imageData2];
@@ -63,7 +65,7 @@ module.exports = (function(){
 
 
 	function add_project(){
-		var project = new Project();
+
 	}
 
 	function invite_user(){
@@ -71,10 +73,7 @@ module.exports = (function(){
 	}
 
 	function save_project(){
-		console.log("save project");
-		$.each(board_elements, function( index, board_element ) {
-			console.log(board_element);
-		});
+		currentProject.saveProject();
 	}
 
 	function delete_project(){
@@ -98,14 +97,14 @@ module.exports = (function(){
 		$.each(imageArray, function( index, imageObject ) {
 	  	$('.board').append(imageObject.el);
 			bean.on(imageObject, 'remove', removeHandler.bind(this));
-			board_elements.push(imageObject);
+			currentProject.addElement(imageObject);
 			});
 	}
 
 	function removeHandler(element){
-		console.log(this.el);
 		$('.board')[0].removeChild(element.el);
-		console.log(element);
+		//remove element from projectlist
+		currentProject.removeElement(element);
 	}
 
 

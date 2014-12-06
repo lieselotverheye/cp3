@@ -42,17 +42,16 @@ module.exports = (function(){
 	};
 
 	BbImage.prototype.mouseMoveHandler = function( event ){
-
-		if((event.y - offsetY) > this.boundaries.top){
+		if((event.y - offsetY) > this.boundaries.top &&
+			(event.y - offsetY) < this.boundaries.bottom
+			){
 			this.xPos = event.x - offsetX ;
 			this.yPos = event.y - offsetY;
 			this.el.style.left = this.xPos +'px';
 			this.el.style.top = this.yPos + 'px';
 		}
-		else{
-			//window.removeEventListener('mousemove', this._mouseMoveHandler);
-		//window.removeEventListener('mouseup', this._mouseUpHandler);
-		}
+
+		console.log( 'Offset x = ' + this.xPos + ' | y = ' + this.yPoss);
 
 	};
 
@@ -64,7 +63,7 @@ module.exports = (function(){
 
 
 
-	BbImage.prototype.removeClickHandler = function(e) {
+	BbImage.prototype.removeClickHandler = function( event ) {
 		bean.fire(this, 'remove', this);
 
 	};
