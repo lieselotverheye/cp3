@@ -6,6 +6,7 @@ module.exports = (function(){
 	var Project = require('./Project');
 	var BOUNDARIES = {top: "190", bottom: "800", left: "0", right: ""};
 	var position = {xPos: 500, yPos: 500};
+	var newImage = {image_url : "assets/images/2014-11-30-sunday-rec-projects-bucks-dinosaurs.jpg"};
 
 	function clicked(e){
 		e.preventDefault();
@@ -18,7 +19,7 @@ module.exports = (function(){
 			break;
 			case "delete_project" : delete_project();
 			break;
-			case "add_image": add_image();
+			case "add_image": add_image("assets/images/2014-11-30-sunday-rec-projects-bucks-dinosaurs.jpg");
 			break;
 			case "add_post-it" : add_post_it();
 			break;
@@ -41,9 +42,10 @@ module.exports = (function(){
 
 		if(document.URL.search("home") != -1 ){
 
-		fetch_data();
+
 
 		}
+		fetch_data();
 
 
 	}
@@ -76,17 +78,23 @@ module.exports = (function(){
 	}
 
 	function add_image(data){
+		var bbImage, imageArray = [];
 		if(data instanceof Array){
-			//console.log(data + " is an array");
 			for(var i = 0; i<data.length;i++){
-				var bbImage = new BbImage(data[i], position, BOUNDARIES);
-				$('.board').append(bbImage.el);
-				bean.on(bbImage, 'remove', removeHandler.bind(this));
+				bbImage = new BbImage(data[i], position, BOUNDARIES);
+				imageArray.push(bbImage);
 			}
 		}
-		else if(data instanceof String){
-			console.log(data + " is a string");
+
+		else if(typeof(data) === "string"){
+			bbImage = new BbImage(newImage, position, BOUNDARIES);
+			imageArray.push(bbImage);
 		}
+
+		$.each(imageArray, function( index, imageObject ) {
+	  	$('.board').append(imageObject.el);
+			bean.on(imageObject, 'remove', removeHandler.bind(this));
+			});
 	}
 
 	function removeHandler(element){
