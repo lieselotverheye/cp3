@@ -58,8 +58,8 @@
 
 			<!--- dit komt er pas op als je op "add image" hebt gedrukt: -->
 			<div class="containerrechts2">
-				<input type="file" name="image" class="control" data-control="add_image"/>
-				<input type="submit" class="upload" name="upload" value="upload" class="control" data-control="upload_image"/>
+				<input type="file" name="image" class="file" data-control=""/>
+				<input type="submit" class="upload" name="upload" value="upload" class="control" data-control="upload"/>
 			</div>
 			</div>
 			<?php
@@ -84,7 +84,7 @@
 
 		        <div class="board">
 		        	<header class="boardheader">
-		        		<h1>Project Title here</h1>
+		        		<h2>Project Title here</h2>
 		        		<p>users working on this project:</p>
 
 		        	</header>

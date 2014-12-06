@@ -4,13 +4,30 @@ module.exports = (function(){
 	var Invite = require('./Invite');
 	var Postit = require('./Postit');
 	var Project = require('./Project');
+	var BbUploader = require('./BbUploader');
 	var BOUNDARIES = {top: "190", bottom: "550", left: "0", right: ""};
 	var position = {xPos: 500, yPos: 500};
 	var newImage = {image_url : "assets/images/2014-11-30-sunday-rec-projects-bucks-dinosaurs.jpg"};
-	var board_elements = [];
-	var currentProject;
+	var currentProject, currentUploadAction;
 
-	function clicked(e){
+	function Blackboard(el){
+		bBuploader = new BbUploader();
+		$('.containerrechts2').hide();
+		this.el = el;
+		Array.prototype.forEach.call(document.getElementsByTagName("input"), function(input){
+			if(!input.getAttribute("data-control")){
+				console.log(input + "does not contain data control");
+			}else{
+				input.addEventListener("click",clicked);
+			}
+		});
+
+		if(document.URL.search("home") != -1 ){
+		}
+		fetch_data();
+	}
+
+		function clicked(e){
 		e.preventDefault();
 			switch(e.currentTarget.getAttribute("data-control")){
 			case "new_project" : add_project();
@@ -27,26 +44,9 @@ module.exports = (function(){
 			break;
 			case "add_video" : add_video();
 			break;
+			case "upload" : uploadItem();
+			break;
 		}
-	}
-
-
-	function Blackboard(el){
-		this.el = el;
-
-		Array.prototype.forEach.call(document.getElementsByTagName("input"), function(input){
-			if(!input.getAttribute("data-control")){
-				console.log(input + "does not contain data control");
-			}else{
-				input.addEventListener("click",clicked);
-			}
-		});
-
-		if(document.URL.search("home") != -1 ){
-		}
-		fetch_data();
-
-
 	}
 
 	function fetch_data(){
@@ -65,9 +65,11 @@ module.exports = (function(){
 	var projectName_input = document.querySelector('.project_name').value;
 	var add_project_validation = currentProject.setProjectName(projectName_input);
 		switch(add_project_validation){
-			case "success" : $('h1').text(projectName_input);
+			case "success" : $('h2').text(projectName_input);
 			break;
 			case "name_set" : //showen dat de naam al geset is, mogelijks veranderen
+			break;
+			case "no_name" : //tonen dat er geen naam gegeven is
 			break;
 		}
 	}
@@ -85,6 +87,7 @@ module.exports = (function(){
 	}
 
 	function add_image(data){
+
 		var bbImage, imageArray = [];
 		if(data instanceof Array){
 			for(var i = 0; i<data.length;i++){
@@ -94,6 +97,8 @@ module.exports = (function(){
 		}
 
 		else if(typeof(data) === "string"){
+			animateUploadField();
+			this.currentUploadAction = "image";
 			bbImage = new BbImage(newImage, position, BOUNDARIES);
 			imageArray.push(bbImage);
 		}
@@ -113,12 +118,46 @@ module.exports = (function(){
 
 
 	function add_post_it(){
+		animateUploadField();
 		var postit = new Postit();
+		this.currentUploadAction = "postit";
 	}
 
 	function add_video(){
+		animateUploadField();
 		var bbVideo = new BbVideo();
+		this.currentUploadAction = "video";
 	}
+
+	function animateUploadField(){
+		if(!$('.containerrechts2').is(":visible") ){
+			$('.containerrechts2').show(100);
+
+			/*setTimeout(function() {
+      // Do something every 2 seconds
+      $('.containerrechts2').hide(100);
+			}, 20000);*/
+		}
+		else(console.log("already hidden"));
+	}
+
+	function uploadItem(){
+		console.log(window.FileReader.readAsDataURL);
+		console.log(bBuploader);
+		var selected_file = $(':file').prop('files')[0];
+		if(selected_file !== undefined){
+			var input = event.target;
+      console.log("url  " + reader.readAsDataURL(selected_file));
+			bBuploader.upload(this.currentUploadAction, selected_file.name);
+		}
+		else{
+			console.log("no file selectd");
+		}
+	}
+
+
+		//console.log(e.target.files[0].name);
+
 	return Blackboard;
 })();
 

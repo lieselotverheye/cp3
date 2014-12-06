@@ -16,7 +16,10 @@ module.exports = (function(){
 	};
 
 	Project.prototype.setProjectName = function(name){
-		if(this.projectName === ""){
+		if(name === ""){
+			return "no_name";
+		}
+		else if(this.projectName === "" && name !==""){
 			this.projectName = name;
 			return "success";
 		}
