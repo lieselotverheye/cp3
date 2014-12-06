@@ -9,11 +9,11 @@ module.exports = (function(){
 		this.removeButton = ($(this.el).find('.btn-delete')[0]);
 		bean.on(this.removeButton, 'click', this.removeClickHandler.bind(this));
 
-		var xpos = position.xPos;
-		var ypos = position.yPos;
+		this.xPos = position.xPos;
+		this.yPos = position.yPos;
 
-		this.el.style.left = xpos + 'px';
-		this.el.style.top = ypos + 'px';
+		this.el.style.left = this.xPos + 'px';
+		this.el.style.top = this.yPos + 'px';
 
 		this._mouseDownHandler = this.mouseDownHandler.bind(this);
 		this._mouseMoveHandler = this.mouseMoveHandler.bind(this);
@@ -44,9 +44,10 @@ module.exports = (function(){
 	BbImage.prototype.mouseMoveHandler = function( event ){
 
 		if((event.y - offsetY) > this.boundaries.top){
-		this.el.style.left = (event.x - offsetX ) +'px';
-		this.el.style.top = (event.y - offsetY) + 'px';
-		console.log(event.y - offsetY);
+			this.xPos = event.x - offsetX ;
+			this.yPos = event.y - offsetY;
+			this.el.style.left = this.xPos +'px';
+			this.el.style.top = this.yPos + 'px';
 		}
 		else{
 			//window.removeEventListener('mousemove', this._mouseMoveHandler);
@@ -56,7 +57,6 @@ module.exports = (function(){
 	};
 
 	BbImage.prototype.mouseUpHandler = function( event ){
-		console.log("mouse goes up");
 		window.removeEventListener('mousemove', this._mouseMoveHandler);
 		window.removeEventListener('mouseup', this._mouseUpHandler);
 	};
