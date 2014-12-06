@@ -39,7 +39,7 @@
 				<form method="post">
 						<input type="submit" class="control newproject" data-control="add_project" value="new project"/>
 
-						<input type="text" placeholder="project name"></li>
+						<input type="text" class="project_name" placeholder="project name"></li>
 						<input type="submit" class="rolloutInput" value="submit" data-control="new_project"></li>
 
 					<div class="containerrechts">

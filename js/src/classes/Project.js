@@ -2,6 +2,7 @@ module.exports = (function(){
 
 	function Project() {
 		this.elements = [];
+		this.projectName = "";
 		console.log('[Project] constructor');
 	}
 
@@ -15,9 +16,15 @@ module.exports = (function(){
 	};
 
 	Project.prototype.saveProject = function(){
-		$.each(this.elements, function( index, project_element ) {
-			console.log(project_element);
-		});
+		if(this.projectName != ""){
+			$.each(this.elements, function( index, project_element ) {
+				console.log(project_element);
+			});
+		}
+		else{
+			return "no_name";
+		}
+		return "success";
 
 	}
 

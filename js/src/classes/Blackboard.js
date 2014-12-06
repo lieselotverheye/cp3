@@ -13,7 +13,7 @@ module.exports = (function(){
 	function clicked(e){
 		e.preventDefault();
 			switch(e.currentTarget.getAttribute("data-control")){
-			case "add_project" : add_project();
+			case "new_project" : add_project();
 			break;
 			case "invite_user" : invite_user();
 			break;
@@ -43,9 +43,6 @@ module.exports = (function(){
 		});
 
 		if(document.URL.search("home") != -1 ){
-
-
-
 		}
 		fetch_data();
 
@@ -65,7 +62,7 @@ module.exports = (function(){
 
 
 	function add_project(){
-
+	currentProject.projectName = document.querySelector('.project_name').value;
 	}
 
 	function invite_user(){
@@ -73,7 +70,7 @@ module.exports = (function(){
 	}
 
 	function save_project(){
-		currentProject.saveProject();
+		console.log(currentProject.saveProject());
 	}
 
 	function delete_project(){
