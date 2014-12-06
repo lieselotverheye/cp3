@@ -15,8 +15,18 @@ module.exports = (function(){
 		console.log("removed " + element + " from array, has "+ this.elements.length + " items");
 	};
 
+	Project.prototype.setProjectName = function(name){
+		if(this.projectName === ""){
+			this.projectName = name;
+			return "success";
+		}
+		else{
+			return "name_exists";
+		}
+	};
+
 	Project.prototype.saveProject = function(){
-		if(this.projectName != ""){
+		if(this.projectName !== ""){
 			$.each(this.elements, function( index, project_element ) {
 				console.log(project_element);
 			});
@@ -25,8 +35,7 @@ module.exports = (function(){
 			return "no_name";
 		}
 		return "success";
-
-	}
+	};
 
 
 

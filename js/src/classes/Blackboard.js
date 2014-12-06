@@ -62,7 +62,14 @@ module.exports = (function(){
 
 
 	function add_project(){
-	currentProject.projectName = document.querySelector('.project_name').value;
+	var projectName_input = document.querySelector('.project_name').value;
+	var add_project_validation = currentProject.setProjectName(projectName_input);
+		switch(add_project_validation){
+			case "success" : $('h1').text(projectName_input);
+			break;
+			case "name_set" : //showen dat de naam al geset is, mogelijks veranderen
+			break;
+		}
 	}
 
 	function invite_user(){
