@@ -5,12 +5,16 @@ module.exports = (function(){
 	var Postit = require('./Postit');
 	var Project = require('./Project');
 	var BbUploader = require('./BbUploader');
+	var Loginregister = require('./Loginregister');
 	var BOUNDARIES = {top: "190", bottom: "550", left: "0", right: ""};
 	var position = {xPos: 200, yPos: 200};
 	var newImage = {image_url : "assets/images/2014-11-30-sunday-rec-projects-bucks-dinosaurs.jpg"};
 	var currentProject, currentUploadAction;
 
 	function Blackboard(el){
+		var login = new Loginregister();
+		bean.on(login, 'login', loginHandler.bind(this));
+
 		bBuploader = new BbUploader();
 		$('.containerrechts2').hide();
 		this.el = el;
@@ -87,7 +91,7 @@ module.exports = (function(){
 	}
 
 	function add_image(data){
-
+		console.log(data);
 		var bbImage, imageArray = [];
 		if(data instanceof Array){
 			for(var i = 0; i<data.length;i++){
@@ -115,6 +119,10 @@ module.exports = (function(){
 		$('.board')[0].removeChild(element.el);
 		//remove element from projectlist
 		currentProject.removeElement(element);
+	}
+
+		function loginHandler(){
+			console.log("logged in");
 	}
 
 	function object_selectedHandler(element){

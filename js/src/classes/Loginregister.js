@@ -56,6 +56,7 @@ module.exports = (function(){
 				//session = data.session.user;
 				console.log('gebruiker ingelogd');
 				$("#loginheader header").remove();
+				bean.fire(this, 'login', this);
 				loadnewHeader(data.session.user);
 
 			}else{
