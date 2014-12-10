@@ -32,12 +32,11 @@ class ItemsController extends Controller {
        	}
 
 
-
        	if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
        		if(empty($errors)){
+       			$_SESSION['user'] = $data['email'];
        			header('Content-Type: application/json');
 	        	echo json_encode(array('result' => true, 'data' => $data, 'session' => $_SESSION, 'errors' => $errors));
-      			$_SESSION['user'] = $data['email'];
       		}else{
       			header('Content-Type: application/json');
 	       		echo json_encode(array('result' => false, 'data' => $data, 'session' => $_SESSION, 'errors' => $errors));

@@ -1,7 +1,11 @@
 module.exports = (function(){
+	var post;
+
 	function Loginregister() {
 		//console.log('[Loginregister] constructor');
-
+		console.log(post);
+		if(typeof(post) == "undefined"){
+			console.log("post is undefined");
 		var template = Handlebars.compile($('#notloggedin-template').text());
 		var context = {title: ""};
 
@@ -10,9 +14,18 @@ module.exports = (function(){
 
 		var loginheader = document.querySelector('#loginheader');
 		loginheader.appendChild(el);
+		}
 
-				login();
 
+
+		login();
+
+
+
+
+	}
+
+	function defaultheader(){
 
 	}
 
@@ -38,7 +51,9 @@ module.exports = (function(){
 		.done(function( data ) {
 		console.log(data);
 
-			if( data.result ){
+			if( data.result === true){
+				post = data.result;
+				//session = data.session.user;
 				console.log('gebruiker ingelogd');
 				$("#loginheader header").remove();
 				loadnewHeader(data.session.user);
@@ -54,21 +69,22 @@ module.exports = (function(){
 
 	  });
 
-
-
 	}
 
 	function loadnewHeader(useremail){
 
-		var template = Handlebars.compile($('#loggedin-template').text());
+
+		var template = Handlebars.compile($('#loggedin-template').html());
 		var context = {user: useremail};
 
 		var result = template(context);
-		var el = $(result)[0];
-		console.log(el);
+
+		var el = [$(result)[0], $(result)[1], $(result)[2]];
 
 		var def = document.querySelector('#loginheader');
-		def.appendChild(el);
+		def.appendChild(el[0]);
+		def.appendChild(el[1]);
+		def.appendChild(el[2]);
 
 	}
 
