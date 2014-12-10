@@ -38,10 +38,63 @@
 						<input class="loginbutton" type="submit" name="action" value="login"/>
 
 						<a href="index.php?page=register" class="register">register</a>
-						<span class="error"><?php if(!empty($errors['email'])){ echo $errors['email']; } ?></span>
-						<span class="error errorpassword"><?php if(!empty($errors['password'])){ echo $errors['password']; } ?></span>
+						<span class="error erroremail"></span>
+						<span class="error errorpassword"></span>
 					</form>
 				</header>
+			</script>
+
+<script id="loggedin-template" type="text/template">
+				<header>
+
+				<form id="formie" method="post" action="index.php?page=home">
+
+				<h1 class="title">Whiteboard</h1>
+
+					<a class="logout" href="index.php?page=logout">Logout</a>
+					<select class="selectprojects">
+					<option value="empty">My projects</option>
+					</select>;
+					<p class="loggedin">logged in as  {{user}} </p>
+
+			</form>
+			</header>
+
+			<div class="projectcontr">
+
+			<div class="user_controls">
+				<form method="post">
+						<input type="submit" class="control newproject" data-control="add_project" value="new project"/>
+
+						<input type="text" class="project_name" placeholder="project name"></li>
+						<input type="submit" class="rolloutInput" value="submit" data-control="new_project"></li>
+
+					<div class="containerrechts">
+						<input type="submit" value="invite user" class="control" data-control="invite_user"/>
+						<input type="submit" value="save" class="control" data-control="save_project"/>
+						<input type="submit" value="delete"class="control" data-control="delete_project"/>
+					</div>
+				</form>
+
+			</div>
+
+			<div class="project_controls">
+				<input type="submit" value="add image" class="control" data-control="add_image"/>
+				<input type="submit" value="add post-it" class="control" data-control="add_post-it"/>
+				<input type="submit" value="add video" class="control" data-control="add_video"/>
+
+			<div class="containerrechts2">
+				<input type="file" name="image" class="file" data-control=""/>
+				<input type="submit" class="upload" name="upload" value="upload" class="control" data-control="upload"/>
+			</div>
+			</div>
+
+			<div id="sessionmessages">
+
+      </div>
+			</div>
+
+
 			</script>
 
     <script src="js/vendor/handlebars.min.js"></script>
