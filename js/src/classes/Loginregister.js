@@ -2,56 +2,65 @@ module.exports = (function(){
 	function Loginregister() {
 		//console.log('[Loginregister] constructor');
 		login();
+
+		var template = Handlebars.compile($('#notloggedin-template').text());
+		var result = template();
+
+
 	}
 
 
 
 	function login(){
-		//console.log("login!!!")
+		console.log("login!!!")
 
-		$('.loginbutton').on('click', loginhandler);
+		$('.loginbutton').on('click', function(event){
 
-
-	}
-
-	function loginhandler(){
-
-		event.preventDefault();
-		var inputData = {
-			'loginEmail': $('.loginEmail').val(),
-			'loginPass': $('.loginPass').val()
-		};
-
-		var errorCheck = {
-			'email': $('.loginEmail').val(),
-			'password': $('.loginPass').val()
-		};
-
-
-		// 1. POST naar php functie (bv. checkUsername)
-		var checkEmail = $.post('index.php?page=checkusername', errorCheck);
-		console.log("got email back " + checkEmail);
-
-		//checkEmail.done !!!! voor data op te halen
-
-		// in php doe je database check
-
-		// in php: return true or false
-
-		// 2. in succeshandler van ajax call check je als true of false is
-		//succeshandler = .done
-
-
-		//validation
-
-		var saveUserAjax = $.post('index.php?page=home', inputData);
-
-		saveUserAjax.done(function(data){
-			console.log('Got data back ' + data);
+			event.preventDefault();
+			voorbeeldJSONPost();
 
 		});
 
 	}
+
+function voorbeeldJSONPost() {
+
+		$.post( "index.php?page=home", {
+			email: $('.loginEmail').val(),
+			pass: $('.loginPass').val(),
+		})
+		.done(function( data ) {
+			console.log(data);
+
+			if( data.result ){
+				console.log('gebruiker ingelogd');
+				$("#formie").remove();
+			}else{
+				console.log('gebruiker NIET ingelogd');
+			}
+
+
+
+
+	   	if(data.session) {
+
+	   	} else {
+
+
+
+
+	   	}
+
+
+
+	  });
+
+
+
+	}
+
+
+
 
 
 

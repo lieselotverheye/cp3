@@ -16,123 +16,60 @@ class ItemsController extends Controller {
 	public function overview() {
 
 		//LOGIN
-
-		/*if(!empty($_POST['action'])) {
-			if($_POST['action'] == 'login') {
-				$this->_handleLogin();
-			}
-		}*/
-		$email = '';
-		$pass = '';
-		$errors = array();
-
-		if(!empty($_POST)){
-			$email = $_POST['loginEmail'];
-			$pass = $_POST['loginPass'];
-
-			if(empty($email)){
-				$errors['loginEmail']="enter an email";
-			}
-
-			if(empty($pass)){
-				$errors['loginPass']="enter a password";
-			}
-
-		}
+		//print_r($_SESSION);
 
 
-		$resultArray = array(
-				'succes' => true,
-				'email' => $email,
-				'pass' => $pass,
-			);
+		   $data = $_POST;
+       if(!empty($data)){
+
+      		$_SESSION['user'] = $data['email'];
+	        header('Content-Type: application/json');
+
+	        echo json_encode(array('result' => true, 'data' => $data, 'session' => $_SESSION));
+
+	        die();
+
+        }else{
+        	//echo 'ajax - php - post is leeg';
+        }
 
 
-		//checken als het een ajax request is en dan loggen:::::: !!!!!!
-		if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])
-		    && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
-		   // I'm AJAX!
-
-			echo json_encode( $resultArray);
-			die();
-		}
 	}
 
 
 	public function checkUsername(){
 
-
-		$data = array();
-
-		if( !empty($_POST) ){
-
-			$email = $_POST['email'];
-			$password = $_POST['password'];
-
-			$existing = $this->userDAO->selectByEmail( $email );
-
-			if( empty($existing) ){
-
-				$data['success'] = false;
-				$data['errors'] = array(
-						'User does not exist'
-				);
-
-			}else{
-
-				$hasher = new \Phpass\Hash;
-								//if empty(id -> redirect!)
-
-				if ($hasher->checkPassword( $password, $existing['pass'])) {
-					$_SESSION['user'] = $existing;
-					$_SESSION['info'] = "Logged in successfully!";
-
-					$data['success'] = true;
-
-				}else{
-					$data['success'] = false;
-					$data['errors'] = array(
-							'Password is not correct'
-					);
-				}
-
-			}
+    //todo: db logica
+		$data = $_POST;
+		$errors = array();
 
 
-			/*
-			if(empty($test)){
-				$errors['loginEmail'] = 'Please enter your email';
-			}
+		if(empty($data['email'])){
+			$errors['email'] = "please enter an email";
+		}
+		if(empty($data['password'])){
+			$errors['password'] = "please enter a password";
+		}
 
-				if(empty($errors)){
-					$existing = $this->userDAO->selectByEmail($_POST['loginEmail']);
-					if(!empty($existing)) {
-						$hasher = new \Phpass\Hash;
-								//if empty(id -> redirect!)
+		if(!empty($errors)){
+					$this->set('errors', $errors);
+		die();
 
-					if ($hasher->checkPassword($_POST['loginPass'], $existing['pass'])) {
-					$_SESSION['user'] = $existing;
-					$_SESSION['info'] = "Logged in successfully!";
-					echo true;
-					//$this->redirect('index.php?page=home');
-				}
-
-
-			}*/
-
-
-		} else{
-
-			$data['success'] = false;
-				$data['errors'] = array(
-						'POST data does not exist'
-				);
 		}
 
 
-		echo json_encode($data);
+		if(empty($errors)){
+   		$_SESSION['user'] = $data;
+		}
 
-	}
+    header('Content-Type: application/json');
+    echo json_encode(array('result' => $_SESSION['user'], 'errors' => $errors));
+    die();
+
+
+  }
+
+
 
 
 
