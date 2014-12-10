@@ -6,7 +6,7 @@ module.exports = (function(){
 	var Project = require('./Project');
 	var BbUploader = require('./BbUploader');
 	var BOUNDARIES = {top: "190", bottom: "550", left: "0", right: ""};
-	var position = {xPos: 500, yPos: 500};
+	var position = {xPos: 200, yPos: 200};
 	var newImage = {image_url : "assets/images/2014-11-30-sunday-rec-projects-bucks-dinosaurs.jpg"};
 	var currentProject, currentUploadAction;
 
@@ -106,6 +106,7 @@ module.exports = (function(){
 		$.each(imageArray, function( index, imageObject ) {
 	  	$('.board').append(imageObject.el);
 			bean.on(imageObject, 'remove', removeHandler.bind(this));
+			bean.on(imageObject, 'object_selected', object_selectedHandler.bind(this));
 			currentProject.addElement(imageObject);
 			});
 	}
@@ -114,6 +115,17 @@ module.exports = (function(){
 		$('.board')[0].removeChild(element.el);
 		//remove element from projectlist
 		currentProject.removeElement(element);
+	}
+
+	function object_selectedHandler(element){
+		//$('.board')[0].(element.el);
+		console.log("selected" + element.el);
+		console.log("z index = " + element.el.style.zIndex);
+		console.log("total elements = " + currentProject.elements.length);
+		$.each(currentProject.elements, function( index, value ) {
+			value.el.style.zIndex = "0";
+		});
+		element.el.style.zIndex = String(currentProject.elements.length);
 	}
 
 

@@ -23,11 +23,7 @@ module.exports = (function(){
 	}
 
 	BbImage.prototype.mouseDownHandler = function( event ){
-		//je selecteert het block element door de bind,
-		//zonder bind zou je de div (this.el) selecteren
-		//console.log(this);
-		//console.log(this.naam);
-
+		bean.fire(this, 'object_selected', this);
 		event.preventDefault();
 		offsetX = event.offsetX;
 		offsetY = event.offsetY;
