@@ -46,9 +46,6 @@ module.exports = (function(){
 			this.el.style.left = this.xPos +'px';
 			this.el.style.top = this.yPos + 'px';
 		}
-
-		console.log( 'Offset x = ' + this.xPos + ' | y = ' + this.yPoss);
-
 	};
 
 	BbImage.prototype.mouseUpHandler = function( event ){

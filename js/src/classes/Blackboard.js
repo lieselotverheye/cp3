@@ -13,7 +13,7 @@ module.exports = (function(){
 
 	function Blackboard(el){
 		var login = new Loginregister();
-		bean.on(login, 'login', loginHandler.bind(this));
+		bean.on(login, 'login');
 
 		bBuploader = new BbUploader();
 		$('.containerrechts2').hide();
@@ -91,7 +91,6 @@ module.exports = (function(){
 	}
 
 	function add_image(data){
-		console.log(data);
 		var bbImage, imageArray = [];
 		if(data instanceof Array){
 			for(var i = 0; i<data.length;i++){
@@ -117,19 +116,14 @@ module.exports = (function(){
 
 	function removeHandler(element){
 		$('.board')[0].removeChild(element.el);
-		//remove element from projectlist
 		currentProject.removeElement(element);
 	}
 
-		function loginHandler(){
+	function loginHandler(){
 			console.log("logged in");
 	}
 
 	function object_selectedHandler(element){
-		//$('.board')[0].(element.el);
-		console.log("selected" + element.el);
-		console.log("z index = " + element.el.style.zIndex);
-		console.log("total elements = " + currentProject.elements.length);
 		$.each(currentProject.elements, function( index, value ) {
 			value.el.style.zIndex = "0";
 		});
@@ -152,13 +146,7 @@ module.exports = (function(){
 	function animateUploadField(){
 		if(!$('.containerrechts2').is(":visible") ){
 			$('.containerrechts2').show(100);
-
-			/*setTimeout(function() {
-      // Do something every 2 seconds
-      $('.containerrechts2').hide(100);
-			}, 20000);*/
 		}
-		else(console.log("already hidden"));
 	}
 
 	function uploadItem(){
