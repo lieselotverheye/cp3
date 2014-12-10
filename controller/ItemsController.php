@@ -19,8 +19,6 @@ class ItemsController extends Controller {
 		//print_r($_SESSION);
 		$errors = array();
 
-
-
 		   $data = $_POST;
        if(!empty($data)){
 
@@ -31,25 +29,43 @@ class ItemsController extends Controller {
        		$errors['password'] = "Please enter a password";
        	}
 
+       	if(empty($errors)){
+	       		$existinguser = $this->userDAO->selectByEmail($data['email']);
+	       			if(empty($existinguser)){
+	       				$errors['email'] = "User does not exist";
+	       				header('Content-Type: application/json');
+							  echo json_encode(array('result' => false, 'data' => $data, 'session' => $_SESSION, 'errors' => $errors));
+							  die();
+	       			}else{
+	       				$hasher = new \Phpass\Hash;
+									if ($hasher->checkPassword($data['pass'], $existinguser['pass'])) {
+										if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+						       		if(empty($errors)){
+						       			$_SESSION['user'] = $data['email'];
+						       			header('Content-Type: application/json');
+							        	echo json_encode(array('result' => true, 'data' => $data, 'session' => $_SESSION, 'errors' => $errors));
+							        	die();
+						      		}
 
-       	if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-       		if(empty($errors)){
-       			$_SESSION['user'] = $data['email'];
-       			header('Content-Type: application/json');
-	        	echo json_encode(array('result' => true, 'data' => $data, 'session' => $_SESSION, 'errors' => $errors));
-      		}else{
-      			header('Content-Type: application/json');
-	       		echo json_encode(array('result' => false, 'data' => $data, 'session' => $_SESSION, 'errors' => $errors));
-      		}
+										}
+		       				}else{
+		       					$errors['password'] = "Password incorrect";
+		       					header('Content-Type: application/json');
+							       echo json_encode(array('result' => false, 'data' => $data, 'session' => $_SESSION, 'errors' => $errors));
+							       die();
+		       				}
+		       			}
 
+				}else{
+					header('Content-Type: application/json');
+							  echo json_encode(array('result' => false, 'data' => $data, 'session' => $_SESSION, 'errors' => $errors));
+							  die();
+				}
 
-	        die();
-					}
-        }else{
-        }
 
 
 	}
+}
 
 
 	public function checkUsername(){
