@@ -4,8 +4,13 @@ module.exports = (function(){
 		login();
 
 		var template = Handlebars.compile($('#notloggedin-template').text());
-		var result = template();
+		var context = {title: "My New Post", body: "This is my first post!"}
 
+		var result = template(context);
+		var el = $(result)[0];
+
+var loginheader = document.querySelector('#loginheader');
+		loginheader.appendChild(el);
 
 	}
 

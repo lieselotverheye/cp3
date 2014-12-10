@@ -1,27 +1,9 @@
 
-		<header>
+		<div id="loginheader">
 
-			<form id="formie" method="post" action="index.php?page=home">
 
-				<h1 class="title">Whiteboard</h1>
 
-				<?php
-				if(empty($_SESSION['user'])){
-				?>
-
-				<?php
-				}if(!empty($_SESSION['user'])){
-					echo "<a class=\"logout\" href=\"index.php?page=logout\">Logout</a>";
-					echo "<select class=\"selectprojects\">";
-					echo "<option value=\"empty\">My projects</option>";
-					echo "</select>";
-					echo "<p class=\"loggedin\">logged in as " . $_SESSION['user']['email'] . "</p>";
-				}
-				?>
-
-			</form>
-
-		</header>
+		</div>
 
 <div class="projectcontr">
 			<?php

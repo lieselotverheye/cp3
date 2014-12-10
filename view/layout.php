@@ -44,6 +44,22 @@
 				</header>
 			</script>
 
+			<script id="loggedin-template" type="text/template">
+
+				<form id="formie" method="post" action="index.php?page=home">
+
+				<h1 class="title">Whiteboard</h1>
+
+					<a class="logout" href="index.php?page=logout">Logout</a>;
+					<select class="selectprojects">;
+					<option value="empty">My projects</option>;
+					</select>;
+					<p class="loggedin">logged in as <?php echo {{user}}; ?> . "</p>";
+
+			</form>
+
+			</script>
+
     <script src="js/vendor/handlebars.min.js"></script>
     <script src="js/vendor/jquery-2.1.1.min.js"></script>
     <script src="js/script.dist.js"></script>
