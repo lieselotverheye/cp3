@@ -62,8 +62,14 @@ module.exports = (function(){
 				if(data.errors.email){
 					$('.erroremail').html(data.errors.email);
 				}
+				if(!data.errors.email){
+					$('.erroremail').html("");
+				}
 				if(data.errors.password){
 					$('.errorpassword').html(data.errors.password);
+				}
+				if(!data.errors.password){
+					$('.errorpassword').html("");
 				}
 			}
 
