@@ -17,20 +17,36 @@ class ItemsController extends Controller {
 
 		//LOGIN
 		//print_r($_SESSION);
+		$errors = array();
+
 
 
 		   $data = $_POST;
        if(!empty($data)){
 
-      		$_SESSION['user'] = $data['email'];
-	        header('Content-Type: application/json');
+       	if(empty($data['email'])){
+       		$errors['email'] = "Please enter an email";
+       	}
+       	if(empty($data['pass'])){
+       		$errors['password'] = "Please enter a password";
+       	}
 
-	        echo json_encode(array('result' => true, 'data' => $data, 'session' => $_SESSION));
+
+
+       	if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+       		if(empty($errors)){
+       			header('Content-Type: application/json');
+	        	echo json_encode(array('result' => true, 'data' => $data, 'session' => $_SESSION, 'errors' => $errors));
+      			$_SESSION['user'] = $data['email'];
+      		}else{
+      			header('Content-Type: application/json');
+	       		echo json_encode(array('result' => false, 'data' => $data, 'session' => $_SESSION, 'errors' => $errors));
+      		}
+
 
 	        die();
-
+					}
         }else{
-        	//echo 'ajax - php - post is leeg';
         }
 
 

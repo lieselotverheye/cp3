@@ -38,13 +38,14 @@
 						<input class="loginbutton" type="submit" name="action" value="login"/>
 
 						<a href="index.php?page=register" class="register">register</a>
-						<span class="error"><?php if(!empty($errors['email'])){ echo $errors['email']; } ?></span>
-						<span class="error errorpassword"><?php if(!empty($errors['password'])){ echo $errors['password']; } ?></span>
+						<span class="error erroremail"></span>
+						<span class="error errorpassword"></span>
 					</form>
 				</header>
 			</script>
 
 			<script id="loggedin-template" type="text/template">
+				<header>
 
 				<form id="formie" method="post" action="index.php?page=home">
 
@@ -54,9 +55,10 @@
 					<select class="selectprojects">;
 					<option value="empty">My projects</option>;
 					</select>;
-					<p class="loggedin">logged in as <?php echo {{user}}; ?> . "</p>";
+					<p class="loggedin">logged in as  {{user}} "</p>";
 
 			</form>
+			</header>
 
 			</script>
 
