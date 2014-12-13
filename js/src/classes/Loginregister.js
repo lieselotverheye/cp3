@@ -1,8 +1,13 @@
 module.exports = (function(){
 	var post;
+	var naam = "frederik";
 
 	function Loginregister() {
 		//console.log('[Loginregister] constructor');
+this.naam = "frederik";
+
+		console.log("naam binnen klasse" + this.naam );
+
 		console.log(post);
 		if(typeof(post) == "undefined"){
 			console.log("post is undefined");
@@ -15,14 +20,7 @@ module.exports = (function(){
 		var loginheader = document.querySelector('#loginheader');
 		loginheader.appendChild(el);
 		}
-
-
-
-		login();
-
-
-
-
+		login.call(this);
 	}
 
 	function defaultheader(){
@@ -31,15 +29,10 @@ module.exports = (function(){
 
 
 	function login(){
-
-		$('.loginbutton').on('click', function(event){
-		console.log("login!!!");
-
+		$('.loginbutton').on('click', (function(event){
 			event.preventDefault();
-			voorbeeldJSONPost();
-
-		});
-
+			voorbeeldJSONPost.call(this);
+		}).bind(this));
 	}
 
 	function voorbeeldJSONPost() {
@@ -48,15 +41,17 @@ module.exports = (function(){
 			email: $('.loginEmail').val(),
 			pass: $('.loginPass').val()
 		})
-		.done(function( data ) {
+		.done((function( data ) {
 		console.log(data);
 
 			if( data.result === true){
+				console.log("correct result in " + this);
 				post = data.result;
 				//session = data.session.user;
 				console.log('gebruiker ingelogd');
 				$("#loginheader header").remove();
 				loadnewHeader(data.session.user);
+				bean.fire(this, 'login');
 
 			}else{
 				if(data.errors.email){
@@ -73,11 +68,13 @@ module.exports = (function(){
 				}
 			}
 
-	  });
+	  }).bind(this));
 
 	}
 
 	function loadnewHeader(useremail){
+
+		console.log(this);
 
 
 		var template = Handlebars.compile($('#loggedin-template').html());
@@ -91,7 +88,8 @@ module.exports = (function(){
 		def.appendChild(el[0]);
 		def.appendChild(el[1]);
 		def.appendChild(el[2]);
-		bean.fire(this, 'login');
+
+		console.log("We gaan login event afvuren");
 	}
 
 
