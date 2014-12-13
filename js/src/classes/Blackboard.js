@@ -22,13 +22,6 @@ module.exports = (function(){
 		bBuploader = new BbUploader();
 		$('.containerrechts2').hide();
 		this.el = el;
-		Array.prototype.forEach.call(document.getElementsByTagName("input"), function(input){
-			if(!input.getAttribute("data-control")){
-				console.log(input + "does not contain data control");
-			}else{
-				input.addEventListener("click",clicked);
-			}
-		});
 
 		if(document.URL.search("home") != -1 ){
 		}
@@ -126,7 +119,14 @@ module.exports = (function(){
 	}
 
 	function loginHandler(e){
-			console.log("LOGIN EVENT ONTVANGEN");
+			Array.prototype.forEach.call(document.getElementsByTagName("input"), function(input){
+			if(!input.getAttribute("data-control")){
+				console.log(input + "does not contain data control");
+			}else{
+				input.addEventListener("click",clicked);
+				console.log(input);
+			}
+		});
 	}
 
 	function object_selectedHandler(element){

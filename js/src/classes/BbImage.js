@@ -11,7 +11,6 @@ module.exports = (function(){
 
 		this.xPos = position.xPos;
 		this.yPos = position.yPos;
-
 		this.el.style.left = this.xPos + 'px';
 		this.el.style.top = this.yPos + 'px';
 
@@ -25,11 +24,9 @@ module.exports = (function(){
 	BbImage.prototype.mouseDownHandler = function( event ){
 		bean.fire(this, 'object_selected', this);
 		event.preventDefault();
-		offsetX = event.offsetX;
-		offsetY = event.offsetY;
-
-		//console.log( 'Offset x = ' + this.offsetX + ' | y = ' + this.offsetY);
-
+		this.offsetX = event.offsetX;
+		this.offsetY = event.offsetY;
+		//console.log( ' offsetx = ' + this.offsetY + ' | offsety = ' + this.offsetY);
 		window.addEventListener('mousemove', this._mouseMoveHandler);
 		window.addEventListener('mouseup', this._mouseUpHandler);
 
@@ -38,14 +35,13 @@ module.exports = (function(){
 	};
 
 	BbImage.prototype.mouseMoveHandler = function( event ){
-		if((event.y - offsetY) > this.boundaries.top &&
-			(event.y - offsetY) < this.boundaries.bottom
-			){
-			this.xPos = event.x - offsetX ;
-			this.yPos = event.y - offsetY;
+
+			this.xPos = event.x - (this.offsetX);
+			this.yPos = event.y - (this.offsetY);
+			//console.log( ' offsetx = ' + this.offsetY + ' | offsety = ' + this.offsetY);
+			//console.log( ' x = ' + this.xPos + ' | y = ' + this.yPos);
 			this.el.style.left = this.xPos +'px';
 			this.el.style.top = this.yPos + 'px';
-		}
 	};
 
 	BbImage.prototype.mouseUpHandler = function( event ){
