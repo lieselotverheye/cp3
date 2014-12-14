@@ -22,6 +22,17 @@ module.exports = (function(){
 		bBuploader = new BbUploader();
 
 		this.el = el;
+<<<<<<< Updated upstream
+=======
+		Array.prototype.forEach.call(document.getElementsByTagName("input"), function(input){
+			console.log(input);
+			if(!input.getAttribute("data-control")){
+				console.log(input + "does not contain data control");
+			}else{
+				input.addEventListener("click",clicked);
+			}
+		});
+>>>>>>> Stashed changes
 
 		if(document.URL.search("home") != -1 ){
 		}
