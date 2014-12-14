@@ -20,6 +20,10 @@ $routes = array(
 	'checkusername' => array(
 		'controller' => 'Items',
 		'action' => 'checkUsername'
+	),
+	'addproject' => array(
+		'controller' => 'Items',
+		'action' => 'addproject'
 	)
 );
 

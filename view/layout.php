@@ -63,7 +63,7 @@
 			<div class="projectcontr">
 
 			<div class="user_controls">
-				<form method="post">
+				<form method="post" action="index.php?page=addproject">
 						<input type="submit" class="control newproject" data-control="add_project" value="new project"/>
 						<input type="text" class="project_name" placeholder="project name"></li>
 						<input type="submit" class="rolloutInput submitNewProject" value="submit" data-control="new_project"></li>

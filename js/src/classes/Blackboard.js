@@ -22,8 +22,7 @@ module.exports = (function(){
 		bBuploader = new BbUploader();
 
 		this.el = el;
-<<<<<<< Updated upstream
-=======
+
 		Array.prototype.forEach.call(document.getElementsByTagName("input"), function(input){
 			console.log(input);
 			if(!input.getAttribute("data-control")){
@@ -32,10 +31,9 @@ module.exports = (function(){
 				input.addEventListener("click",clicked);
 			}
 		});
->>>>>>> Stashed changes
 
-		if(document.URL.search("home") != -1 ){
-		}
+		//if(document.URL.search("home") != -1 ){
+		//}
 		fetch_data();
 	}
 

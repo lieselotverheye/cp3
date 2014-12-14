@@ -14,9 +14,7 @@ class ItemsController extends Controller {
 	}
 
 	public function overview() {
-
 		//LOGIN
-		//print_r($_SESSION);
 		$errors = array();
 
 		   $data = $_POST;
@@ -133,6 +131,13 @@ class ItemsController extends Controller {
 			$_SESSION['error'] = 'Unknown username / password';
 		}
 		$this->set('errors', $errors);
+	}
+
+
+	public function addproject(){
+
+
+
 	}
 
 
