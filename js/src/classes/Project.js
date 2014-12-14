@@ -3,6 +3,7 @@ module.exports = (function(){
 	function Project() {
 		this.elements = [];
 		this.projectName = "";
+		this.currentUser = "";
 		console.log('[Project] constructor');
 	}
 

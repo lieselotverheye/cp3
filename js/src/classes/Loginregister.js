@@ -1,14 +1,6 @@
 module.exports = (function(){
-	var post;
-	var naam = "frederik";
-
 	function Loginregister() {
 		//console.log('[Loginregister] constructor');
-this.naam = "frederik";
-
-		console.log("naam binnen klasse" + this.naam );
-
-		console.log(post);
 		if(typeof(post) == "undefined"){
 			console.log("post is undefined");
 		var template = Handlebars.compile($('#notloggedin-template').text());
@@ -74,7 +66,7 @@ this.naam = "frederik";
 
 	function loadnewHeader(useremail){
 
-		console.log(this);
+		this.user = useremail;
 
 
 		var template = Handlebars.compile($('#loggedin-template').html());

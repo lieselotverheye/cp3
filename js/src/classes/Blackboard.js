@@ -9,13 +9,12 @@ module.exports = (function(){
 	var BOUNDARIES = {top: "190", bottom: "550", left: "0", right: ""};
 	var position = {xPos: 200, yPos: 200};
 	var newImage = {image_url : "assets/images/2014-11-30-sunday-rec-projects-bucks-dinosaurs.jpg"};
-	var currentProject, currentUploadAction;
+	var currentProject, currentUploadAction, login;
 
 
 	function Blackboard(el){
 		console.log("Blackboard constructor");
 		login = new Loginregister();
-		console.log(login);
 		bean.on(login, 'login', loginHandler);
 		console.log("naam = " + login.naam);
 
@@ -122,10 +121,8 @@ module.exports = (function(){
 	function loginHandler(e){
 			Array.prototype.forEach.call(document.getElementsByTagName("input"), function(input){
 			if(!input.getAttribute("data-control")){
-				console.log(input + "does not contain data control");
 			}else{
 				input.addEventListener("click",clicked);
-				console.log(input);
 			}
 		});
 	}
@@ -157,13 +154,11 @@ module.exports = (function(){
 	}
 
 	function uploadItem(){
-		console.log(window.FileReader.readAsDataURL);
-		console.log(bBuploader);
+		//ajax upload van de open file dialog string
 		var selected_file = $(':file').prop('files')[0];
 		if(selected_file !== undefined){
 			var input = event.target;
-      console.log("url  " + reader.readAsDataURL(selected_file));
-			bBuploader.upload(this.currentUploadAction, selected_file.name);
+			bBuploader.uploadOneItem(this.currentUploadAction, selected_file.name);
 		}
 		else{
 			console.log("no file selectd");
