@@ -5,7 +5,8 @@ module.exports = (function(){
 		var result = template("");
 		this.el = ( $(result) )[0];
 		this.input = this.el.querySelector('.postIt-input');
-		this.el.addEventListener('submit', this.submitHandler.bind(this));
+		this.el.addEventListener('submit', submitHandler.bind(this));
+		this.el.querySelector('.colors').addEventListener('change', colorChangeHandler.bind(this));
 		console.log(this.el);
 
 		this._mouseDownHandler = this.mouseDownHandler.bind(this);
@@ -15,17 +16,35 @@ module.exports = (function(){
 		this.el.querySelector('.content').addEventListener('mousedown', this._mouseDownHandler);
 	}
 
-Postit.prototype.submitHandler = function(event) {
+function submitHandler(event) {
 		event.preventDefault();
 		this.el.querySelector('p').innerText = this.input.value;
 		this.input.value = '';
 	};
 
+function colorChangeHandler(event){
+	console.log(event.currentTarget.value)
+	var color;
+		switch(event.currentTarget.value){
+			case "yellow" : color = "FF0";
+			break;
+			case "magenta" : color = "F0F";
+			break;
+			case "cyaan" : color = "00FFFF";
+			break;
+			case "key" : color = "000000";
+			this.el.style.color = "#FFF";
+			break;
+		}
+	this.el.style.backgroundColor = "#"+color;
+}
+
 Postit.prototype.mouseDownHandler = function( event ){
+		bean.fire(this, 'object_selected', this);
 		if(event.toElement != "[object HTMLInputElement]"){
 		event.preventDefault();
 		}
-		bean.fire(this, 'object_selected', this);
+
 
 		this.clickOffsetX = event.offsetX;
 		this.clickOffsetY = event.offsetY;
