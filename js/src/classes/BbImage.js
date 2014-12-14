@@ -57,5 +57,9 @@ module.exports = (function(){
 
 	};
 
+	BbImage.prototype.toString = function(){
+		return "[BbImage]";
+	};
+
 	return BbImage;
 })();

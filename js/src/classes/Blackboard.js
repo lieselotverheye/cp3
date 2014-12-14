@@ -83,6 +83,7 @@ module.exports = (function(){
 
 	function save_project(){
 		console.log(currentProject.saveProject());
+		bBuploader.uploadBoard(currentProject);
 	}
 
 	function delete_project(){
