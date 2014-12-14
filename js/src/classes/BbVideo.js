@@ -36,9 +36,8 @@ module.exports = (function(){
 	};
 
 	BbVideo.prototype.mouseMoveHandler = function( event ){
-
-			this.xPos = event.x - (this.offsetX*2);
-			this.yPos = event.y - (this.offsetY*2);
+			this.xPos = event.x - (this.offsetX);
+			this.yPos = event.y - (this.offsetY);
 
 			this.el.style.left = this.xPos +'px';
 			this.el.style.top = this.yPos + 'px';
@@ -50,6 +49,7 @@ module.exports = (function(){
 	};
 
 	BbVideo.prototype.removeClickHandler = function( event ) {
+		console.log("remove");
 		bean.fire(this, 'remove', this);
 
 	};

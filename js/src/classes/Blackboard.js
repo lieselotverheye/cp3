@@ -182,7 +182,7 @@ module.exports = (function(){
 		}
 		else if(button === "new_project"){
 			console.log('show project');
-			if(!$('.containerrechts2').is(":visible") ){
+			if(!$('.project_name').is(":visible") ){
 				$('.project_name').show(100);
 				$('.submitNewProject').show(100);
 			}

@@ -22,7 +22,7 @@
 			</script>
 			<script id="videoTemplate" type="text/template">
     		<div class='video'>
-		       <video src="{{{video_url}}}" controls ></video>
+		       <video src="{{{video_url}}}" controls></video>
 		       <input type="submit" value="delete" class="btn-delete"></input>
 		      </div>
 			</script>
