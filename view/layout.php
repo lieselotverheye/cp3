@@ -27,6 +27,26 @@
 		      </div>
 			</script>
 
+			<script id="postItTemplate" type="text/template">
+			<div class="postIt">
+			<select class="colors">
+				<option value="cyaan">cyaan</option>
+			  <option value="magenta">magenta</option>
+			  <option value="yellow">yellow</option>
+			  <option value="key">key</option>
+			</select>
+			<div class="content">
+			<p>padding-right: 5px; padding-right padding
+			-right: 5px;padding-right: 5px;padding-right: 5px;padding-right:
+			5px;: 5px; padding-right: 5px; padding-right: 5px; padding-right: 5px;
+			</p>
+			</content>
+				<form>
+				<input type="text" class="postIt-input" placeholder="type and press enter" />
+				</form>
+			</div>
+			</script>
+
 			<!-- script header login -->
 			<script id="notloggedin-template" type="text/template">
 				<header>

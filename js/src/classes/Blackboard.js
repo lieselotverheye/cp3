@@ -152,9 +152,8 @@ module.exports = (function(){
 
 
 	function add_post_it(){
-		animateUploadField();
 		var postit = new Postit();
-		this.currentUploadAction = "postit";
+		$('.board').append(postit.el);
 	}
 
 	function add_video(data){
