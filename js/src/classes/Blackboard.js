@@ -19,7 +19,7 @@ module.exports = (function(){
 		console.log("naam = " + login.naam);
 
 		bBuploader = new BbUploader();
-		$('.containerrechts2').hide();
+
 		this.el = el;
 
 		if(document.URL.search("home") != -1 ){
@@ -32,6 +32,8 @@ module.exports = (function(){
 		function clicked(e){
 		e.preventDefault();
 			switch(e.currentTarget.getAttribute("data-control")){
+			case "add_project" : animateFields("new_project");
+			break;
 			case "new_project" : add_project();
 			break;
 			case "invite_user" : invite_user();
@@ -99,7 +101,7 @@ module.exports = (function(){
 		}
 
 		else if(typeof(data) === "string"){
-			animateUploadField();
+			animateFields("upload");
 			this.currentUploadAction = "image";
 			bbImage = new BbImage(newImage, position, BOUNDARIES);
 			imageArray.push(bbImage);
@@ -119,6 +121,9 @@ module.exports = (function(){
 	}
 
 	function loginHandler(e){
+			$('.containerrechts2').hide();
+			$('.project_name').hide();
+			$('.submitNewProject').hide();
 			Array.prototype.forEach.call(document.getElementsByTagName("input"), function(input){
 			if(!input.getAttribute("data-control")){
 			}else{
@@ -147,9 +152,18 @@ module.exports = (function(){
 		this.currentUploadAction = "video";
 	}
 
-	function animateUploadField(){
-		if(!$('.containerrechts2').is(":visible") ){
-			$('.containerrechts2').show(100);
+	function animateFields(button){
+		if(button === "upload"){
+			if(!$('.containerrechts2').is(":visible") ){
+				$('.containerrechts2').show(100);
+			}
+		}
+		else if(button === "new_project"){
+			console.log('show project');
+			if(!$('.containerrechts2').is(":visible") ){
+				$('.project_name').show(100);
+				$('.submitNewProject').show(100);
+			}
 		}
 	}
 

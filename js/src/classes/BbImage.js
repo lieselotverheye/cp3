@@ -36,8 +36,8 @@ module.exports = (function(){
 
 	BbImage.prototype.mouseMoveHandler = function( event ){
 
-			this.xPos = event.x - (this.offsetX);
-			this.yPos = event.y - (this.offsetY);
+			this.xPos = event.x - (this.offsetX*2);
+			this.yPos = event.y - (this.offsetY*2);
 			//console.log( ' offsetx = ' + this.offsetY + ' | offsety = ' + this.offsetY);
 			//console.log( ' x = ' + this.xPos + ' | y = ' + this.yPos);
 			this.el.style.left = this.xPos +'px';
