@@ -49,9 +49,6 @@ module.exports = (function(){
 		window.removeEventListener('mouseup', this._mouseUpHandler);
 	};
 
-
-
-
 	BbImage.prototype.removeClickHandler = function( event ) {
 		bean.fire(this, 'remove', this);
 

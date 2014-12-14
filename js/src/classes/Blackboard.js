@@ -9,6 +9,7 @@ module.exports = (function(){
 	var BOUNDARIES = {top: "190", bottom: "550", left: "0", right: ""};
 	var position = {xPos: 200, yPos: 200};
 	var newImage = {image_url : "assets/images/2014-11-30-sunday-rec-projects-bucks-dinosaurs.jpg"};
+	var newVideo = {video_url : "assets/videos/Patti Smith - Horses.mp4"};
 	var currentProject, currentUploadAction, login;
 
 
@@ -46,7 +47,7 @@ module.exports = (function(){
 			break;
 			case "add_post-it" : add_post_it();
 			break;
-			case "add_video" : add_video();
+			case "add_video" : add_video("string");
 			break;
 			case "upload" : uploadItem();
 			break;
@@ -133,6 +134,7 @@ module.exports = (function(){
 	}
 
 	function object_selectedHandler(element){
+		console.log(element);
 		$.each(currentProject.elements, function( index, value ) {
 			value.el.style.zIndex = "0";
 		});
@@ -146,10 +148,30 @@ module.exports = (function(){
 		this.currentUploadAction = "postit";
 	}
 
-	function add_video(){
-		animateUploadField();
-		var bbVideo = new BbVideo();
-		this.currentUploadAction = "video";
+	function add_video(data){
+		animateFields("upload");
+		var bbVideo, videoArray = [];
+		if(data instanceof Array){
+			for(var i = 0; i<data.length;i++){
+				bbVideo = new BbVideo(data[i], position, BOUNDARIES);
+				videoArray.push(bbVideo);
+			}
+		}
+
+		else if(typeof(data) === "string"){
+			animateFields("upload");
+			this.currentUploadAction = "video";
+			bbVideo = new BbVideo(newVideo, position, BOUNDARIES);
+			videoArray.push(bbVideo);
+		}
+
+		$.each(videoArray, function( index, videoObject ) {
+			console.log(videoObject);
+	  	$('.board').append(videoObject.el);
+			bean.on(videoObject, 'remove', removeHandler.bind(this));
+			bean.on(videoObject, 'object_selected', object_selectedHandler.bind(this));
+			currentProject.addElement(videoObject);
+			});
 	}
 
 	function animateFields(button){
