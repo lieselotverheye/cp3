@@ -65,8 +65,8 @@
 			<div class="user_controls">
 				<form method="post" action="index.php?page=addproject">
 						<input type="submit" class="control newproject" data-control="add_project" value="new project"/>
-						<input type="text" class="project_name" placeholder="project name"></li>
-						<input type="submit" class="rolloutInput submitNewProject" value="submit" data-control="new_project"></li>
+						<input type="text" class="project_name" placeholder="project name">
+						<input type="submit" class="rolloutInput submitNewProject" value="submit" data-control="new_project">
 					<div class="containerrechts">
 						<input type="submit" value="invite user" class="control" data-control="invite_user"/>
 						<input type="submit" value="save" class="control" data-control="save_project"/>
