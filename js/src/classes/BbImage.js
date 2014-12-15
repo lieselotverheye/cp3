@@ -19,14 +19,16 @@ module.exports = (function(){
 		this._mouseUpHandler = this.mouseUpHandler.bind(this);
 
 		this.el.addEventListener('mousedown', this._mouseDownHandler);
+
+		var clickOffsetX, clickOffsetY;
 	}
 
 	BbImage.prototype.mouseDownHandler = function( event ){
 		event.preventDefault();
 		bean.fire(this, 'object_selected', this);
 
-		this.clickOffsetX = event.offsetX;
-		this.clickOffsetY = event.offsetY;
+		clickOffsetX = event.offsetX;
+		clickOffsetY = event.offsetY;
 		console.log(event);
 		//console.log( ' offsetx = ' + this.offsetY + ' | offsety = ' + this.offsetY);
 		window.addEventListener('mousemove', this._mouseMoveHandler);
@@ -37,8 +39,12 @@ module.exports = (function(){
 	};
 
 	BbImage.prototype.mouseMoveHandler = function( event ){
-			this.xPos = event.x - this.clickOffsetX;
-			this.yPos = event.y - this.clickOffsetY;
+			//console.log(event);
+				console.log($(event)[0]);
+			this.xPos = event.x - clickOffsetX;
+			console.log(clickOffsetX);
+			this.yPos = event.y - clickOffsetY;
+
 			this.el.style.left = this.xPos +'px';
 			this.el.style.top = this.yPos + 'px';
 	};
