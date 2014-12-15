@@ -44,6 +44,7 @@
 				<form>
 				<input type="text" class="postIt-input" placeholder="type and press enter" />
 				</form>
+				 <input type="submit" value="delete" class="btn-delete"></input>
 			</div>
 			</script>
 

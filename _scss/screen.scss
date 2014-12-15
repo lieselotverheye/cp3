@@ -432,8 +432,7 @@ a + .error{
 	background-color: #FFaaCC;
 	.colors{
 		position: relative;
-		float:right;
-		top: 5px;
+		float:left;
 		margin-bottom: 5px;
 	}
 	.postIt-input{
@@ -442,6 +441,7 @@ a + .error{
 
 	}
 	p{
+		padding-top: 15px;
 		margin-top: 15px;
 	}
 }
