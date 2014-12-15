@@ -36,9 +36,7 @@
 			  <option value="key">key</option>
 			</select>
 			<div class="content">
-			<p>padding-right: 5px; padding-right padding
-			-right: 5px;padding-right: 5px;padding-right: 5px;padding-right:
-			5px;: 5px; padding-right: 5px; padding-right: 5px; padding-right: 5px;
+			<p>
 			</p>
 			</content>
 				<form>

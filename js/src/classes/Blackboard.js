@@ -37,9 +37,7 @@ module.exports = (function(){
 		fetch_data();
 	}
 
-
-
-		function clicked(e){
+	function clicked(e){
 		e.preventDefault();
 			switch(e.currentTarget.getAttribute("data-control")){
 			case "add_project" : animateFields("new_project");
@@ -101,30 +99,6 @@ module.exports = (function(){
 		console.log("delete_project");
 	}
 
-	function add_image(data){
-		var bbImage, imageArray = [];
-		if(data instanceof Array){
-			for(var i = 0; i<data.length;i++){
-				bbImage = new BbImage(data[i], position, BOUNDARIES);
-				imageArray.push(bbImage);
-			}
-		}
-
-		else if(typeof(data) === "string"){
-			animateFields("upload");
-			this.currentUploadAction = "image";
-			bbImage = new BbImage(newImage, position, BOUNDARIES);
-			imageArray.push(bbImage);
-		}
-
-		$.each(imageArray, function( index, imageObject ) {
-	  	$('.board').append(imageObject.el);
-			bean.on(imageObject, 'remove', removeHandler.bind(this));
-			bean.on(imageObject, 'object_selected', object_selectedHandler.bind(this));
-			currentProject.addElement(imageObject);
-			});
-	}
-
 	function removeHandler(element){
 		$('.board')[0].removeChild(element.el);
 		currentProject.removeElement(element);
@@ -150,13 +124,53 @@ module.exports = (function(){
 		element.el.style.zIndex = String(currentProject.elements.length);
 	}
 
+//adding objects
+function add_object(data){
+		var bbImage, imageArray = [];
+		if(data instanceof Array){
+			for(var i = 0; i<data.length;i++){
+				bbImage = new BbImage(data[i], position, BOUNDARIES);
+				imageArray.push(bbImage);
+			}
+		}
 
-	function add_post_it(){
-		var postit = new Postit();
-		bean.on(postit, 'object_selected', object_selectedHandler.bind(this));
-		bean.on(postit, 'remove', removeHandler.bind(this));
-		$('.board').append(postit.el);
-		currentProject.addElement(postit);
+		else if(typeof(data) === "string"){
+			animateFields("upload");
+			this.currentUploadAction = "image";
+			bbImage = new BbImage(newImage, position, BOUNDARIES);
+			imageArray.push(bbImage);
+		}
+
+		$.each(imageArray, function( index, imageObject ) {
+	  	$('.board').append(imageObject.el);
+			bean.on(imageObject, 'remove', removeHandler.bind(this));
+			bean.on(imageObject, 'object_selected', object_selectedHandler.bind(this));
+			currentProject.addElement(imageObject);
+			});
+	}
+
+function add_image(data){
+		var bbImage, imageArray = [];
+		if(data instanceof Array){
+			for(var i = 0; i<data.length;i++){
+				bbImage = new BbImage(data[i], position, BOUNDARIES);
+				imageArray.push(bbImage);
+			}
+		}
+
+		else if(typeof(data) === "string"){
+			animateFields("upload");
+			this.currentUploadAction = "image";
+			bbImage = new BbImage(newImage, position, BOUNDARIES);
+			imageArray.push(bbImage);
+		}
+
+		$.each(imageArray, function( index, imageObject ) {
+	  	$('.board').append(imageObject.el);
+			bean.on(imageObject, 'remove', removeHandler.bind(this));
+			bean.on(imageObject, 'object_selected', object_selectedHandler.bind(this));
+			currentProject.addElement(imageObject);
+			});
 	}
 
 	function add_video(data){
@@ -183,6 +197,14 @@ module.exports = (function(){
 			bean.on(videoObject, 'object_selected', object_selectedHandler.bind(this));
 			currentProject.addElement(videoObject);
 			});
+	}
+
+	function add_post_it(){
+		var postit = new Postit();
+		bean.on(postit, 'object_selected', object_selectedHandler.bind(this));
+		bean.on(postit, 'remove', removeHandler.bind(this));
+		$('.board').append(postit.el);
+		currentProject.addElement(postit);
 	}
 
 	function animateFields(button){

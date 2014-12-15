@@ -35,12 +35,11 @@ module.exports = (function(){
 		window.addEventListener('mouseup', this._mouseUpHandler);
 
 		//class toekenennen met een drop shadow
-
 	};
 
 	BbImage.prototype.mouseMoveHandler = function( event ){
 			//console.log(event);
-				console.log($(event)[0]);
+			console.log($(event)[0]);
 			this.xPos = event.x - clickOffsetX;
 			console.log(clickOffsetX);
 			this.yPos = event.y - clickOffsetY;

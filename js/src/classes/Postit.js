@@ -19,7 +19,7 @@ module.exports = (function(){
 
 function submitHandler(event) {
 		event.preventDefault();
-		this.el.querySelector('p').innerText = this.input.value;
+		this.el.querySelector('p').innerText += " " + this.input.value;
 		this.input.value = '';
 	};
 
