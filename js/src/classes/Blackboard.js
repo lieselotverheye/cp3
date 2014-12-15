@@ -125,29 +125,6 @@ module.exports = (function(){
 	}
 
 //adding objects
-function add_object(data){
-		var bbImage, imageArray = [];
-		if(data instanceof Array){
-			for(var i = 0; i<data.length;i++){
-				bbImage = new BbImage(data[i], position, BOUNDARIES);
-				imageArray.push(bbImage);
-			}
-		}
-
-		else if(typeof(data) === "string"){
-			animateFields("upload");
-			this.currentUploadAction = "image";
-			bbImage = new BbImage(newImage, position, BOUNDARIES);
-			imageArray.push(bbImage);
-		}
-
-		$.each(imageArray, function( index, imageObject ) {
-	  	$('.board').append(imageObject.el);
-			bean.on(imageObject, 'remove', removeHandler.bind(this));
-			bean.on(imageObject, 'object_selected', object_selectedHandler.bind(this));
-			currentProject.addElement(imageObject);
-			});
-	}
 
 function add_image(data){
 		var bbImage, imageArray = [];
