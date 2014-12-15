@@ -7,7 +7,8 @@ module.exports = (function(){
 		this.input = this.el.querySelector('.postIt-input');
 		this.el.addEventListener('submit', submitHandler.bind(this));
 		this.el.querySelector('.colors').addEventListener('change', colorChangeHandler.bind(this));
-		console.log(this.el);
+		this.removeButton = ($(this.el).find('.btn-delete')[0]);
+		bean.on(this.removeButton, 'click', this.removeClickHandler.bind(this));
 
 		this._mouseDownHandler = this.mouseDownHandler.bind(this);
 		this._mouseMoveHandler = this.mouseMoveHandler.bind(this);
@@ -24,6 +25,7 @@ function submitHandler(event) {
 
 function colorChangeHandler(event){
 	console.log(event.currentTarget.value)
+	this.el.style.color = "#000";
 	var color;
 		switch(event.currentTarget.value){
 			case "yellow" : color = "FF0";
@@ -69,6 +71,7 @@ Postit.prototype.mouseDownHandler = function( event ){
 	};
 
 	Postit.prototype.removeClickHandler = function( event ) {
+		console.log("postIt delete")
 		bean.fire(this, 'remove', this);
 
 	};

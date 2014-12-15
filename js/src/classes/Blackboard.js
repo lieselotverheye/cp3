@@ -154,6 +154,7 @@ module.exports = (function(){
 	function add_post_it(){
 		var postit = new Postit();
 		bean.on(postit, 'object_selected', object_selectedHandler.bind(this));
+		bean.on(postit, 'remove', removeHandler.bind(this));
 		$('.board').append(postit.el);
 		currentProject.addElement(postit);
 	}
